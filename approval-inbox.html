@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pusat Approval Berjenjang (3-Level) - PDAM Tirta Asri</title>
+  <link rel="stylesheet" href="css/00-tokens.css">
+  <link rel="stylesheet" href="css/01-reset.css">
+  <link rel="stylesheet" href="css/02-components.css">
+  <link rel="stylesheet" href="css/03-web-layout.css">
+  <style>
+    /* CSS Tab Switching via Radio Buttons */
+    .tab-input {
+      display: none;
+    }
+    .tab-nav {
+      display: flex;
+      gap: var(--space-2);
+      border-bottom: 2px solid var(--color-border-subtle);
+      margin-bottom: var(--space-4);
+      overflow-x: auto;
+    }
+    .tab-label {
+      padding: var(--space-3) var(--space-5);
+      font-size: var(--font-sm);
+      font-weight: var(--font-semibold);
+      color: var(--color-text-muted);
+      cursor: pointer;
+      border-bottom: 3px solid transparent;
+      margin-bottom: -2px;
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      white-space: nowrap;
+      transition: all var(--transition-fast);
+      min-height: 44px;
+    }
+    .tab-label:hover {
+      color: var(--color-primary-base);
+    }
+    .tab-content {
+      display: none;
+    }
+    #tab-radio-l1:checked ~ .web-container .tab-nav label[for="tab-radio-l1"],
+    #tab-radio-l2:checked ~ .web-container .tab-nav label[for="tab-radio-l2"],
+    #tab-radio-l3:checked ~ .web-container .tab-nav label[for="tab-radio-l3"] {
+      color: var(--color-primary-base);
+      border-bottom-color: var(--color-primary-base);
+      background-color: var(--color-primary-surface);
+      border-radius: var(--radius-md) var(--radius-md) 0 0;
+    }
+    #tab-radio-l1:checked ~ .web-container #content-l1,
+    #tab-radio-l2:checked ~ .web-container #content-l2,
+    #tab-radio-l3:checked ~ .web-container #content-l3 {
+      display: block;
+    }
+  </style>
+</head>
+<body class="web-shell">
+
+  <!-- Radio Inputs Tab Switching Pure CSS -->
+  <input type="radio" name="approval-tab" id="tab-radio-l1" class="tab-input">
+  <input type="radio" name="approval-tab" id="tab-radio-l2" class="tab-input" checked>
+  <input type="radio" name="approval-tab" id="tab-radio-l3" class="tab-input">
+
+  <!-- TOPBAR -->
+  <header class="web-topbar">
+    <div style="display: flex; align-items: center; gap: var(--space-3);">
+      <a href="#sidebar-drawer" class="web-topbar__menu-toggle" aria-label="Buka Menu Navigasi">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </a>
+      <a href="dashboard.html" class="web-topbar__brand">
+        <div class="web-topbar__logo">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+          </svg>
+        </div>
+        <div class="web-topbar__brand-text">
+          <span class="web-topbar__brand-title">PDAM Tirta Asri</span>
+          <span class="web-topbar__brand-sub">Arsip As-Built Drawing</span>
+        </div>
+      </a>
+    </div>
+
+    <div class="web-topbar__actions">
+      <div class="web-topbar__role-pill">
+        <span class="badge__dot" style="background-color: var(--color-success-base);"></span>
+        <span>Kasi Perencanaan (L2)</span>
+      </div>
+      <a href="app/index.html" class="btn btn--outline btn--sm">App Lapangan</a>
+      <a href="index.html" class="btn btn--secondary btn--sm">Keluar</a>
+    </div>
+  </header>
+
+  <!-- SIDEBAR NAVIGASI -->
+  <aside class="web-sidebar" id="sidebar-drawer">
+    <div class="sidebar__section">
+      <span class="sidebar__heading">Menu Utama</span>
+      <a href="dashboard.html" class="sidebar__link">
+        <div class="sidebar__link-content">
+          <svg class="sidebar__link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="3" width="7" height="7"/>
+            <rect x="14" y="3" width="7" height="7"/>
+            <rect x="14" y="14" width="7" height="7"/>
+            <rect x="3" y="14" width="7" height="7"/>
+          </svg>
+          <span>Dashboard</span>
+        </div>
+      </a>
+
+      <a href="dokumen-list.html" class="sidebar__link">
+        <div class="sidebar__link-content">
+          <svg class="sidebar__link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+            <polyline points="14 2 14 8 20 8"/>
+          </svg>
+          <span>Katalog Dokumen</span>
+        </div>
+        <span class="badge badge--neutral">1,248</span>
+      </a>
+
+      <a href="opname-monitoring.html" class="sidebar__link">
+        <div class="sidebar__link-content">
+          <svg class="sidebar__link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="12" y1="8" x2="12" y2="12"/>
+            <line x1="12" y1="16" x2="12.01" y2="16"/>
+          </svg>
+          <span>Monitoring Opname</span>
+        </div>
+      </a>
+
+      <a href="approval-inbox.html" class="sidebar__link is-active">
+        <div class="sidebar__link-content">
+          <svg class="sidebar__link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+            <polyline points="22 4 12 14.01 9 11.01"/>
+          </svg>
+          <span>Pusat Approval</span>
+        </div>
+        <span class="badge badge--warning">25</span>
+      </a>
+
+      <a href="admin-master.html" class="sidebar__link">
+        <div class="sidebar__link-content">
+          <svg class="sidebar__link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 2v20M2 12h20"/>
+          </svg>
+          <span>Master DMA & Wilayah</span>
+        </div>
+      </a>
+    </div>
+
+    <div class="sidebar__footer">
+      <a href="app/index.html" class="btn btn--outline btn--full btn--sm">
+        <span>Mode Mobile Surveyor</span>
+      </a>
+    </div>
+  </aside>
+  <a href="#" class="mobile-drawer-overlay" aria-hidden="true"></a>
+
+  <!-- MAIN CONTENT -->
+  <main class="web-main">
+    <div class="web-container">
+      
+      <!-- BREADCRUMB & HEADER -->
+      <div>
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="dashboard.html" class="breadcrumb__link">Beranda</a>
+          <span class="breadcrumb__separator">/</span>
+          <span class="breadcrumb__current">Pusat Persetujuan Dokumen</span>
+        </nav>
+        <div class="page-header" style="margin-top: var(--space-2);">
+          <div>
+            <h1 class="page-header__title">Pusat Persetujuan Dokumen Berjenjang (3-Level)</h1>
+            <p class="page-header__desc">Alur verifikasi berurutan: Pengawas Lapangan (L1) &rarr; Kasi Perencanaan (L2) &rarr; Manajer Teknik (L3).</p>
+          </div>
+          <div class="page-header__actions">
+            <span class="badge badge--info" style="font-size: var(--font-sm); padding: var(--space-2) var(--space-3);">
+              SOP Persetujuan: Maks. 3 Hari Kerja / Tahap
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB SELECTION PURE CSS -->
+      <nav class="tab-nav" aria-label="Tab Level Persetujuan">
+        <label for="tab-radio-l1" class="tab-label">
+          <span>Level 1: Pengawas Lapangan</span>
+          <span class="badge badge--neutral">14 Berkas</span>
+        </label>
+        <label for="tab-radio-l2" class="tab-label">
+          <span>Level 2: Kasi Perencanaan (Anda)</span>
+          <span class="badge badge--warning">8 Berkas</span>
+        </label>
+        <label for="tab-radio-l3" class="tab-label">
+          <span>Level 3: Manajer Teknik / SK</span>
+          <span class="badge badge--success">3 Berkas</span>
+        </label>
+      </nav>
+
+      <!-- TAB CONTENT LEVEL 1 -->
+      <section class="tab-content" id="content-l1">
+        <div class="card">
+          <div class="card__header">
+            <div>
+              <h2 class="card__title">Antrean Verifikasi Fisik Pengawas Lapangan (L1)</h2>
+              <p class="form-hint">Fokus: Memastikan kesesuaian fisik pipa yang tertanam dan keaslian foto lapangan.</p>
+            </div>
+            <span class="badge badge--warning">14 Menunggu</span>
+          </div>
+          <div class="table-container">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>No SPK</th>
+                  <th>Nama Pekerjaan</th>
+                  <th>Wilayah DMA</th>
+                  <th>Surveyor Lapangan</th>
+                  <th>Status L1</th>
+                  <th>Aksi</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="font-family: var(--font-mono); font-weight: bold;">SPK-2026-DMA01-042</td>
+                  <td>Relokasi Pipa PVC ke HDPE Ruas Sukamaju Barat</td>
+                  <td>DMA 01</td>
+                  <td>Rudi Hartono</td>
+                  <td><span class="badge badge--danger">Deviasi Jalur > 2m</span></td>
+                  <td><a href="opname-monitoring.html" class="btn btn--outline btn--sm">Inspeksi Foto</a></td>
+                </tr>
+                <tr>
+                  <td style="font-family: var(--font-mono); font-weight: bold;">SPK-2026-DMA03-011</td>
+                  <td>Pemasangan Sambungan Pelanggan Blok C</td>
+                  <td>DMA 03</td>
+                  <td>Agus Setiawan</td>
+                  <td><span class="badge badge--warning">Menunggu Pengecekan</span></td>
+                  <td><a href="dokumen-detail.html" class="btn btn--primary btn--sm">Verifikasi L1</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB CONTENT LEVEL 2 (DEFAULT ACTIVE) -->
+      <section class="tab-content" id="content-l2">
+        <div class="card">
+          <div class="card__header">
+            <div>
+              <h2 class="card__title">Antrean Evaluasi Teknis Kasi Perencanaan & Pengawasan (L2)</h2>
+              <p class="form-hint">Fokus: Validasi deviasi terhadap DED, kalkulasi hidrolis pipa, dan kelayakan pengesahan.</p>
+            </div>
+            <span class="badge badge--warning">8 Berkas Menunggu Anda</span>
+          </div>
+          <div class="table-container">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>No SPK</th>
+                  <th>Pekerjaan & Material</th>
+                  <th>Hasil Opname L1</th>
+                  <th>Deviasi Teknis</th>
+                  <th>Tenggat Waktu</th>
+                  <th>Putusan Anda</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="background-color: var(--sky-50);">
+                  <td style="font-family: var(--font-mono); font-weight: bold; color: var(--sky-800);">
+                    SPK-2026-DMA04-019
+                  </td>
+                  <td>
+                    <strong>Pemasangan Pipa Distribusi HDPE 150mm</strong><br>
+                    <span class="form-hint">DMA 04 Timur &bull; Kontraktor: PT Tirta Mandiri</span>
+                  </td>
+                  <td><span class="badge badge--success">✔ Terverifikasi L1</span></td>
+                  <td>
+                    <span class="badge badge--warning">Geser Jalur +1.2m</span><br>
+                    <span class="form-hint">Aman dari kabel Telkom</span>
+                  </td>
+                  <td><strong>Hari ini (26 Okt)</strong></td>
+                  <td>
+                    <div style="display: flex; gap: var(--space-2);">
+                      <a href="dokumen-detail.html" class="btn btn--primary btn--sm">Buka Viewer CAD</a>
+                      <a href="#modal-quick-decision" class="btn btn--success btn--sm">Putusan Cepat</a>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="font-family: var(--font-mono); font-weight: bold; color: var(--sky-800);">
+                    SPK-2026-DMA02-088
+                  </td>
+                  <td>
+                    <strong>Interkoneksi Pipa Transmisi Steel 200mm</strong><br>
+                    <span class="form-hint">DMA 02 Selatan &bull; Tim Swakelola</span>
+                  </td>
+                  <td><span class="badge badge--success">✔ Terverifikasi L1</span></td>
+                  <td>
+                    <span class="badge badge--success">Deviasi Nol (Presisi)</span>
+                  </td>
+                  <td>28 Okt 2026</td>
+                  <td>
+                    <div style="display: flex; gap: var(--space-2);">
+                      <a href="dokumen-detail.html" class="btn btn--primary btn--sm">Buka Viewer CAD</a>
+                      <a href="#modal-quick-decision" class="btn btn--outline btn--sm">Putusan Cepat</a>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="font-family: var(--font-mono); font-weight: bold; color: var(--sky-800);">
+                    SPK-2026-DMA04-023
+                  </td>
+                  <td>
+                    <strong>Pemasangan DMA PRV (Pressure Reducing Valve)</strong><br>
+                    <span class="form-hint">DMA 04 Utara &bull; CV Duta Tirta</span>
+                  </td>
+                  <td><span class="badge badge--success">✔ Terverifikasi L1</span></td>
+                  <td>
+                    <span class="badge badge--warning">Kedalaman 1.45m</span>
+                  </td>
+                  <td>29 Okt 2026</td>
+                  <td>
+                    <div style="display: flex; gap: var(--space-2);">
+                      <a href="dokumen-detail.html" class="btn btn--primary btn--sm">Buka Viewer CAD</a>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB CONTENT LEVEL 3 -->
+      <section class="tab-content" id="content-l3">
+        <div class="card">
+          <div class="card__header">
+            <div>
+              <h2 class="card__title">Antrean Pengesahan Manajer Teknik & Direksi (L3)</h2>
+              <p class="form-hint">Fokus: Penerbitan SK Pengesahan Berita Acara As-Built Drawing dan integrasi GIS Pusat.</p>
+            </div>
+            <span class="badge badge--success">3 Siap Diterbitkan SK</span>
+          </div>
+          <div class="table-container">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>No SPK</th>
+                  <th>Pekerjaan</th>
+                  <th>Rekomendasi Kasi L2</th>
+                  <th>Nilai Kontrak</th>
+                  <th>Status SK</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="font-family: var(--font-mono); font-weight: bold;">SPK-2026-DMA04-007</td>
+                  <td>Jaringan Tersier Sambungan Rumah (42 SR)</td>
+                  <td><span class="badge badge--success">Disetujui Penuh L2</span></td>
+                  <td>Rp 245.000.000</td>
+                  <td><span class="badge badge--info">Siap Tanda Tangan Digital</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- MODAL PUTUSAN CEPAT (:target) -->
+  <div class="modal" id="modal-quick-decision" role="dialog" aria-modal="true" aria-labelledby="modal-quick-title">
+    <a href="#" class="modal__backdrop" aria-label="Tutup Dialog"></a>
+    <div class="modal__dialog">
+      <div class="modal__header">
+        <h2 class="modal__title" id="modal-quick-title">Putusan Evaluasi Teknis Kasi (L2)</h2>
+        <a href="#" class="modal__close" aria-label="Tutup">&times;</a>
+      </div>
+      <form action="approval-inbox.html" method="get">
+        <div class="modal__body">
+          <p>Pilih putusan untuk berkas terpilih: <strong>SPK-2026-DMA04-019</strong></p>
+          
+          <div style="display: flex; flex-direction: column; gap: var(--space-3); margin-top: var(--space-4);">
+            <label style="display: flex; gap: var(--space-3); align-items: flex-start; padding: var(--space-3); border: 1.5px solid var(--color-success-border); border-radius: var(--radius-md); background-color: var(--green-50); cursor: pointer;">
+              <input type="radio" name="keputusan" value="approve" checked style="margin-top: 4px;">
+              <div>
+                <strong style="color: var(--green-800);">Setujui & Teruskan ke L3 (Manajer Teknik)</strong>
+                <p class="form-hint" style="font-size: 0.75rem; margin-top: 2px;">Seluruh parameter teknis terverifikasi dan memenuhi toleransi aman PDAM.</p>
+              </div>
+            </label>
+
+            <label style="display: flex; gap: var(--space-3); align-items: flex-start; padding: var(--space-3); border: 1.5px solid var(--color-warning-border); border-radius: var(--radius-md); background-color: var(--amber-50); cursor: pointer;">
+              <input type="radio" name="keputusan" value="revision" style="margin-top: 4px;">
+              <div>
+                <strong style="color: var(--amber-800);">Kembalikan untuk Perbaikan (Revisi Lapangan)</strong>
+                <p class="form-hint" style="font-size: 0.75rem; margin-top: 2px;">Terdapat deviasi atau data lapangan yang belum lengkap untuk dipertanggungjawabkan.</p>
+              </div>
+            </label>
+
+            <label style="display: flex; gap: var(--space-3); align-items: flex-start; padding: var(--space-3); border: 1.5px solid var(--color-danger-border); border-radius: var(--radius-md); background-color: var(--rose-50); cursor: pointer;">
+              <input type="radio" name="keputusan" value="reject" style="margin-top: 4px;">
+              <div>
+                <strong style="color: var(--rose-800);">Tolak Berkas Secara Total</strong>
+                <p class="form-hint" style="font-size: 0.75rem; margin-top: 2px;">Melanggar spesifikasi teknik dasar PDAM dan wajib redesain/survei ulang.</p>
+              </div>
+            </label>
+          </div>
+
+          <div class="form-group" style="margin-top: var(--space-4);">
+            <label for="catatan-putusan-cepat" class="form-label">Catatan Resmi Putusan <span class="required">*</span></label>
+            <textarea id="catatan-putusan-cepat" class="form-control" required placeholder="Tuliskan catatan verifikasi teknis yang akan tercantum pada lembar Berita Acara..."></textarea>
+          </div>
+        </div>
+
+        <div class="modal__footer">
+          <a href="#" class="btn btn--outline">Batal</a>
+          <button type="submit" class="btn btn--primary">Kirim Putusan Resmi</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+</body>
+</html>

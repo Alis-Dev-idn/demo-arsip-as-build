@@ -1,0 +1,1018 @@
+/**
+ * ====================================================================
+ * ARSIP AS-BUILT DRAWING & OPNAME LAPANGAN (PDAM / BUMD)
+ * 02-components.css - Reusable UI Components (Atomic Design)
+ * ====================================================================
+ * Mematuhi: .agent/rules/03-desain-ui.md
+ * - Murni CSS3, Bebas JavaScript
+ * - Interaktivitas dengan :target, :checked, :has(), dan <details>
+ * - Target sentuh min 44px
+ * - Tanpa sudut lancip (border-radius konsisten)
+ * ====================================================================
+ */
+
+/* ====================================================================
+   1. ATOMS: BUTTONS (.btn)
+   ==================================================================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: var(--min-touch-target);
+  padding: 0 var(--space-4);
+  font-family: var(--font-family);
+  font-size: var(--font-sm);
+  font-weight: var(--font-semibold);
+  line-height: var(--leading-none);
+  border-radius: var(--radius-md);
+  border: 1px solid transparent;
+  transition: background-color var(--transition-fast), 
+              border-color var(--transition-fast), 
+              box-shadow var(--transition-fast), 
+              transform var(--transition-fast);
+  white-space: nowrap;
+  user-select: none;
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn--primary {
+  background-color: var(--color-primary-base);
+  color: var(--color-primary-text);
+  box-shadow: var(--shadow-xs);
+}
+
+.btn--primary:hover {
+  background-color: var(--color-primary-hover);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn--secondary {
+  background-color: var(--slate-100);
+  color: var(--slate-800);
+  border-color: var(--slate-200);
+}
+
+.btn--secondary:hover {
+  background-color: var(--slate-200);
+  border-color: var(--slate-300);
+}
+
+.btn--outline {
+  background-color: transparent;
+  color: var(--color-text-main);
+  border-color: var(--color-border-default);
+}
+
+.btn--outline:hover {
+  background-color: var(--color-primary-surface);
+  border-color: var(--color-primary-base);
+  color: var(--color-primary-base);
+}
+
+.btn--danger {
+  background-color: var(--color-danger-base);
+  color: #ffffff;
+}
+
+.btn--danger:hover {
+  background-color: var(--rose-700);
+}
+
+.btn--success {
+  background-color: var(--color-success-base);
+  color: #ffffff;
+}
+
+.btn--success:hover {
+  background-color: var(--green-700);
+}
+
+.btn--warning {
+  background-color: var(--color-warning-base);
+  color: #ffffff;
+}
+
+.btn--warning:hover {
+  background-color: var(--amber-700);
+}
+
+.btn--sm {
+  min-height: 38px;
+  padding: 0 var(--space-3);
+  font-size: var(--font-xs);
+  border-radius: var(--radius-sm);
+}
+
+.btn--lg {
+  min-height: 48px;
+  padding: 0 var(--space-6);
+  font-size: var(--font-base);
+  border-radius: var(--radius-lg);
+}
+
+.btn--icon {
+  width: var(--min-touch-target);
+  height: var(--min-touch-target);
+  min-width: var(--min-touch-target);
+  padding: 0;
+  border-radius: var(--radius-md);
+}
+
+.btn--icon.btn--circle {
+  border-radius: var(--radius-full);
+}
+
+.btn--full {
+  width: 100%;
+}
+
+/* Floating Action Button (FAB) */
+.btn--fab {
+  position: fixed;
+  bottom: calc(var(--space-6) + var(--sab));
+  right: var(--space-6);
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-primary-base);
+  color: #ffffff;
+  box-shadow: var(--shadow-lg);
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.btn--fab:hover {
+  transform: scale(1.05);
+  box-shadow: var(--shadow-xl);
+  background-color: var(--color-primary-hover);
+}
+
+/* ====================================================================
+   2. ATOMS: BADGES & CHIPS
+   ==================================================================== */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: var(--space-1) var(--space-3);
+  font-size: var(--font-xs);
+  font-weight: var(--font-semibold);
+  line-height: var(--leading-none);
+  border-radius: var(--radius-full);
+  border: 1px solid transparent;
+  white-space: nowrap;
+}
+
+.badge--success {
+  background-color: var(--color-success-bg);
+  color: var(--color-success-text);
+  border-color: var(--color-success-border);
+}
+
+.badge--warning {
+  background-color: var(--color-warning-bg);
+  color: var(--color-warning-text);
+  border-color: var(--color-warning-border);
+}
+
+.badge--danger {
+  background-color: var(--color-danger-bg);
+  color: var(--color-danger-text);
+  border-color: var(--color-danger-border);
+}
+
+.badge--info {
+  background-color: var(--color-info-bg);
+  color: var(--color-info-text);
+  border-color: var(--color-info-border);
+}
+
+.badge--neutral {
+  background-color: var(--slate-100);
+  color: var(--slate-700);
+  border-color: var(--slate-300);
+}
+
+/* Dot indicator in badge */
+.badge__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: var(--radius-full);
+  background-color: currentColor;
+}
+
+/* Filter Chips */
+.chip-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  align-items: center;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: 38px;
+  padding: 0 var(--space-4);
+  font-size: var(--font-sm);
+  font-weight: var(--font-medium);
+  border-radius: var(--radius-full);
+  border: 1.5px solid var(--color-border-default);
+  background-color: var(--color-bg-surface);
+  color: var(--color-text-muted);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.chip:hover {
+  border-color: var(--color-primary-base);
+  color: var(--color-primary-base);
+  background-color: var(--color-primary-surface);
+}
+
+.chip--active,
+.chip.is-active {
+  border-color: var(--color-primary-base);
+  background-color: var(--color-primary-surface);
+  color: var(--color-primary-base);
+  font-weight: var(--font-semibold);
+}
+
+/* ====================================================================
+   3. MOLECULES: FORM CONTROLS
+   ==================================================================== */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  margin-bottom: var(--space-4);
+}
+
+.form-label {
+  font-size: var(--font-sm);
+  font-weight: var(--font-semibold);
+  color: var(--color-text-main);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.form-label .required {
+  color: var(--color-danger-base);
+  margin-left: var(--space-1);
+}
+
+.form-control,
+.form-select {
+  width: 100%;
+  min-height: var(--min-touch-target);
+  padding: var(--space-2) var(--space-4);
+  font-size: var(--font-sm);
+  color: var(--color-text-main);
+  background-color: var(--color-bg-surface);
+  border: 1.5px solid var(--color-border-default);
+  border-radius: var(--radius-md);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.form-control:hover,
+.form-select:hover {
+  border-color: var(--slate-400);
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--color-primary-base);
+  box-shadow: 0 0 0 3px var(--sky-100);
+}
+
+.form-select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23475569'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  background-size: 16px;
+  padding-right: var(--space-8);
+}
+
+textarea.form-control {
+  min-height: 96px;
+  padding: var(--space-3) var(--space-4);
+  resize: vertical;
+}
+
+.form-hint {
+  font-size: var(--font-xs);
+  color: var(--color-text-muted);
+}
+
+.form-error {
+  font-size: var(--font-xs);
+  color: var(--color-danger-base);
+  font-weight: var(--font-medium);
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.form-control.is-invalid,
+.form-select.is-invalid {
+  border-color: var(--color-danger-base);
+  background-color: var(--rose-50);
+}
+
+.form-control.is-invalid:focus {
+  box-shadow: 0 0 0 3px var(--rose-100);
+}
+
+/* Mock File Upload Dropzone */
+.upload-dropzone {
+  border: 2px dashed var(--color-border-default);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  text-align: center;
+  background-color: var(--color-bg-card-subtle);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+}
+
+.upload-dropzone:hover {
+  border-color: var(--color-primary-base);
+  background-color: var(--color-primary-surface);
+}
+
+/* ====================================================================
+   4. MOLECULES: CARDS
+   ==================================================================== */
+.card {
+  background-color: var(--color-bg-card);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.card__header {
+  padding: var(--space-4) var(--space-5);
+  border-bottom: 1px solid var(--color-border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  background-color: var(--color-bg-card);
+}
+
+.card__title {
+  font-size: var(--font-lg);
+  font-weight: var(--font-bold);
+  color: var(--color-text-main);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.card__body {
+  padding: var(--space-5);
+  flex: 1;
+}
+
+.card__footer {
+  padding: var(--space-4) var(--space-5);
+  border-top: 1px solid var(--color-border-subtle);
+  background-color: var(--color-bg-card-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--space-3);
+}
+
+/* Stat Card (Dashboard Metrics) */
+.stat-card {
+  background-color: var(--color-bg-card);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-xl);
+  padding: var(--space-5);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  position: relative;
+  overflow: hidden;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.stat-card__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.stat-card__icon {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-primary-surface);
+  color: var(--color-primary-base);
+}
+
+.stat-card__icon--success {
+  background-color: var(--color-success-bg);
+  color: var(--color-success-text);
+}
+
+.stat-card__icon--warning {
+  background-color: var(--color-warning-bg);
+  color: var(--color-warning-text);
+}
+
+.stat-card__icon--danger {
+  background-color: var(--color-danger-bg);
+  color: var(--color-danger-text);
+}
+
+.stat-card__value {
+  font-size: var(--font-3xl);
+  font-weight: var(--font-bold);
+  color: var(--color-text-main);
+  line-height: var(--leading-none);
+}
+
+.stat-card__label {
+  font-size: var(--font-sm);
+  font-weight: var(--font-medium);
+  color: var(--color-text-muted);
+}
+
+.stat-card__delta {
+  font-size: var(--font-xs);
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+/* Task Card (App View List) */
+.task-card {
+  background-color: var(--color-bg-card);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
+  box-shadow: var(--shadow-xs);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  transition: all var(--transition-fast);
+}
+
+.task-card:hover {
+  border-color: var(--color-primary-base);
+  box-shadow: var(--shadow-sm);
+}
+
+/* ====================================================================
+   5. MOLECULES: DATA TABLES
+   ==================================================================== */
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-lg);
+  background-color: var(--color-bg-card);
+  box-shadow: var(--shadow-xs);
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.data-table th {
+  background-color: var(--slate-100);
+  padding: var(--space-3) var(--space-4);
+  font-size: var(--font-xs);
+  font-weight: var(--font-bold);
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 1.5px solid var(--color-border-default);
+  white-space: nowrap;
+}
+
+.data-table td {
+  padding: var(--space-3) var(--space-4);
+  font-size: var(--font-sm);
+  color: var(--color-text-main);
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.data-table tbody tr:hover {
+  background-color: var(--slate-50);
+}
+
+.data-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* ====================================================================
+   6. ORGANISMS: MODAL POPUP DENGAN :target
+   ==================================================================== */
+.modal {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-4);
+  z-index: 100;
+}
+
+.modal:target {
+  display: flex;
+}
+
+.modal__backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: var(--color-bg-overlay);
+  backdrop-filter: blur(2px);
+  z-index: 101;
+}
+
+.modal__dialog {
+  position: relative;
+  z-index: 102;
+  background-color: var(--color-bg-card);
+  border-radius: var(--radius-2xl);
+  box-shadow: var(--shadow-xl);
+  width: 100%;
+  max-width: 540px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: modalIn var(--transition-normal);
+}
+
+.modal__dialog--lg {
+  max-width: 780px;
+}
+
+@keyframes modalIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.modal__header {
+  padding: var(--space-4) var(--space-6);
+  border-bottom: 1px solid var(--color-border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.modal__title {
+  font-size: var(--font-lg);
+  font-weight: var(--font-bold);
+  color: var(--color-text-main);
+}
+
+.modal__close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-full);
+  color: var(--color-text-muted);
+  font-size: var(--font-xl);
+  line-height: 1;
+}
+
+.modal__close:hover {
+  background-color: var(--slate-100);
+  color: var(--color-text-main);
+}
+
+.modal__body {
+  padding: var(--space-6);
+  overflow-y: auto;
+  flex: 1;
+}
+
+.modal__footer {
+  padding: var(--space-4) var(--space-6);
+  border-top: 1px solid var(--color-border-subtle);
+  background-color: var(--color-bg-card-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--space-3);
+}
+
+/* ====================================================================
+   7. ORGANISMS: BOTTOM SHEET (M3 STYLE DENGAN :target)
+   ==================================================================== */
+.bottom-sheet {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: flex-end;
+  justify-content: center;
+  z-index: 100;
+}
+
+.bottom-sheet:target {
+  display: flex;
+}
+
+.bottom-sheet__backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: var(--color-bg-overlay);
+  backdrop-filter: blur(2px);
+  z-index: 101;
+}
+
+.bottom-sheet__content {
+  position: relative;
+  z-index: 102;
+  background-color: var(--color-bg-card);
+  border-radius: var(--radius-3xl) var(--radius-3xl) 0 0;
+  box-shadow: var(--shadow-bottom-sheet);
+  width: 100%;
+  max-width: 480px;
+  padding: var(--space-5) var(--space-6) calc(var(--space-6) + var(--sab));
+  max-height: 85vh;
+  overflow-y: auto;
+  animation: sheetUp var(--transition-normal);
+}
+
+@keyframes sheetUp {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.bottom-sheet__handle {
+  width: 40px;
+  height: 4px;
+  background-color: var(--color-border-default);
+  border-radius: var(--radius-full);
+  margin: 0 auto var(--space-4);
+}
+
+/* ====================================================================
+   8. ATOMS & MOLECULES: OFFLINE BANNER
+   ==================================================================== */
+.offline-banner {
+  background-color: var(--color-offline-bg);
+  color: var(--color-offline-text);
+  border: 1px solid var(--color-offline-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-2) var(--space-4);
+  font-size: var(--font-xs);
+  font-weight: var(--font-semibold);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
+  box-shadow: var(--shadow-xs);
+}
+
+.offline-banner__icon {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+/* ====================================================================
+   9. MOLECULES: ACCORDION DENGAN <details><summary>
+   ==================================================================== */
+.accordion {
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  margin-bottom: var(--space-3);
+  background-color: var(--color-bg-card);
+}
+
+.accordion summary {
+  padding: var(--space-3) var(--space-4);
+  font-size: var(--font-sm);
+  font-weight: var(--font-semibold);
+  color: var(--color-text-main);
+  background-color: var(--color-bg-card);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  user-select: none;
+  min-height: var(--min-touch-target);
+  transition: background-color var(--transition-fast);
+}
+
+.accordion summary::-webkit-details-marker {
+  display: none;
+}
+
+.accordion summary::after {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid var(--color-text-muted);
+  border-bottom: 2px solid var(--color-text-muted);
+  transform: rotate(45deg);
+  transition: transform var(--transition-fast);
+}
+
+.accordion[open] summary::after {
+  transform: rotate(-135deg);
+}
+
+.accordion summary:hover {
+  background-color: var(--slate-50);
+}
+
+.accordion__content {
+  padding: var(--space-4);
+  border-top: 1px solid var(--color-border-subtle);
+  background-color: var(--color-bg-surface);
+}
+
+/* ====================================================================
+   10. MOLECULES: STEPPER (3-LEVEL APPROVAL FLOW)
+   ==================================================================== */
+.stepper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  position: relative;
+  padding-left: var(--space-8);
+}
+
+.stepper::before {
+  content: '';
+  position: absolute;
+  top: 12px;
+  bottom: 12px;
+  left: 15px;
+  width: 2px;
+  background-color: var(--color-border-default);
+}
+
+.stepper__step {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.stepper__circle {
+  position: absolute;
+  left: calc(-1 * var(--space-8) + 1px);
+  top: 0;
+  width: 30px;
+  height: 30px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-bg-surface);
+  border: 2px solid var(--color-border-default);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-xs);
+  font-weight: var(--font-bold);
+  color: var(--color-text-muted);
+}
+
+.stepper__step--completed .stepper__circle {
+  background-color: var(--color-success-base);
+  border-color: var(--color-success-base);
+  color: #ffffff;
+}
+
+.stepper__step--current .stepper__circle {
+  background-color: var(--color-primary-base);
+  border-color: var(--color-primary-base);
+  color: #ffffff;
+  box-shadow: 0 0 0 4px var(--sky-100);
+}
+
+.stepper__title {
+  font-size: var(--font-sm);
+  font-weight: var(--font-bold);
+  color: var(--color-text-main);
+}
+
+.stepper__desc {
+  font-size: var(--font-xs);
+  color: var(--color-text-muted);
+}
+
+/* ====================================================================
+   11. ORGANISMS: BLUEPRINT & CAD DRAWING MOCK VIEWER
+   ==================================================================== */
+.blueprint-box {
+  background-color: #0c1a30;
+  border-radius: var(--radius-xl);
+  border: 1px solid #1e3a5f;
+  position: relative;
+  overflow: hidden;
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.blueprint-grid {
+  background-image: 
+    linear-gradient(rgba(30, 58, 95, 0.4) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(30, 58, 95, 0.4) 1px, transparent 1px);
+  background-size: 20px 20px;
+  width: 100%;
+  min-height: 400px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-4);
+  overflow: auto;
+}
+
+.blueprint-toolbar {
+  position: absolute;
+  top: var(--space-3);
+  right: var(--space-3);
+  display: flex;
+  gap: var(--space-2);
+  background-color: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(4px);
+  padding: var(--space-1);
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  z-index: 10;
+}
+
+.blueprint-toolbar .btn--sm {
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.blueprint-toolbar .btn--sm:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+.blueprint-stamp {
+  position: absolute;
+  bottom: var(--space-4);
+  left: var(--space-4);
+  border: 2px solid #22c55e;
+  color: #22c55e;
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-md);
+  font-size: var(--font-xs);
+  font-weight: var(--font-bold);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transform: rotate(-3deg);
+  background-color: rgba(34, 197, 94, 0.1);
+}
+
+/* ====================================================================
+   12. ATOMS: CHARTS & METERS (MURNI CSS)
+   ==================================================================== */
+.css-donut-chart {
+  width: 120px;
+  height: 120px;
+  border-radius: var(--radius-full);
+  background: conic-gradient(
+    var(--color-success-base) 0% 70%,
+    var(--color-warning-base) 70% 88%,
+    var(--color-danger-base) 88% 100%
+  );
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.css-donut-chart::before {
+  content: '';
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-bg-card);
+}
+
+.css-donut-chart__label {
+  position: relative;
+  font-size: var(--font-base);
+  font-weight: var(--font-bold);
+  color: var(--color-text-main);
+  text-align: center;
+}
+
+.css-bar-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.css-bar-item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.css-bar-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--font-xs);
+  font-weight: var(--font-semibold);
+  color: var(--color-text-muted);
+}
+
+.css-bar-track {
+  width: 100%;
+  height: 10px;
+  background-color: var(--slate-200);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.css-bar-fill {
+  height: 100%;
+  border-radius: var(--radius-full);
+}
+
+.css-bar-fill--primary { background-color: var(--color-primary-base); }
+.css-bar-fill--success { background-color: var(--color-success-base); }
+.css-bar-fill--warning { background-color: var(--color-warning-base); }
+.css-bar-fill--danger { background-color: var(--color-danger-base); }
+
+/* ====================================================================
+   13. ALERTS & CALLOUTS
+   ==================================================================== */
+.alert {
+  padding: var(--space-4);
+  border-radius: var(--radius-lg);
+  border-left: 4px solid;
+  margin-bottom: var(--space-4);
+  display: flex;
+  gap: var(--space-3);
+  font-size: var(--font-sm);
+}
+
+.alert--info {
+  background-color: var(--color-info-bg);
+  color: var(--color-info-text);
+  border-color: var(--color-info-base);
+}
+
+.alert--success {
+  background-color: var(--color-success-bg);
+  color: var(--color-success-text);
+  border-color: var(--color-success-base);
+}
+
+.alert--warning {
+  background-color: var(--color-warning-bg);
+  color: var(--color-warning-text);
+  border-color: var(--color-warning-base);
+}
+
+.alert--danger {
+  background-color: var(--color-danger-bg);
+  color: var(--color-danger-text);
+  border-color: var(--color-danger-base);
+}

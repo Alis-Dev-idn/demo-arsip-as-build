@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Katalog Dokumen As-Built Drawing - PDAM Tirta Asri</title>
+  <link rel="stylesheet" href="css/00-tokens.css">
+  <link rel="stylesheet" href="css/01-reset.css">
+  <link rel="stylesheet" href="css/02-components.css">
+  <link rel="stylesheet" href="css/03-web-layout.css">
+</head>
+<body class="web-shell">
+
+  <!-- TOPBAR -->
+  <header class="web-topbar">
+    <div style="display: flex; align-items: center; gap: var(--space-3);">
+      <a href="#sidebar-drawer" class="web-topbar__menu-toggle" aria-label="Buka Menu Navigasi">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </a>
+      <a href="dashboard.html" class="web-topbar__brand">
+        <div class="web-topbar__logo">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+          </svg>
+        </div>
+        <div class="web-topbar__brand-text">
+          <span class="web-topbar__brand-title">PDAM Tirta Asri</span>
+          <span class="web-topbar__brand-sub">Arsip As-Built Drawing</span>
+        </div>
+      </a>
+    </div>
+
+    <div class="web-topbar__actions">
+      <div class="web-topbar__role-pill">
+        <span class="badge__dot" style="background-color: var(--color-success-base);"></span>
+        <span>Kasi Perencanaan (L2)</span>
+      </div>
+      <a href="app/index.html" class="btn btn--outline btn--sm">App Lapangan</a>
+      <a href="index.html" class="btn btn--secondary btn--sm">Keluar</a>
+    </div>
+  </header>
+
+  <!-- SIDEBAR NAVIGASI -->
+  <aside class="web-sidebar" id="sidebar-drawer">
+    <div class="sidebar__section">
+      <span class="sidebar__heading">Menu Utama</span>
+      <a href="dashboard.html" class="sidebar__link">
+        <div class="sidebar__link-content">
+          <svg class="sidebar__link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="3" width="7" height="7"/>
+            <rect x="14" y="3" width="7" height="7"/>
+            <rect x="14" y="14" width="7" height="7"/>
+            <rect x="3" y="14" width="7" height="7"/>
+          </svg>
+          <span>Dashboard</span>
+        </div>
+      </a>
+
+      <a href="dokumen-list.html" class="sidebar__link is-active">
+        <div class="sidebar__link-content">
+          <svg class="sidebar__link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+            <polyline points="14 2 14 8 20 8"/>
+          </svg>
+          <span>Katalog Dokumen</span>
+        </div>
+        <span class="badge badge--neutral">1,248</span>
+      </a>
+
+      <a href="opname-monitoring.html" class="sidebar__link">
+        <div class="sidebar__link-content">
+          <svg class="sidebar__link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="12" y1="8" x2="12" y2="12"/>
+            <line x1="12" y1="16" x2="12.01" y2="16"/>
+          </svg>
+          <span>Monitoring Opname</span>
+        </div>
+      </a>
+
+      <a href="approval-inbox.html" class="sidebar__link">
+        <div class="sidebar__link-content">
+          <svg class="sidebar__link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+            <polyline points="22 4 12 14.01 9 11.01"/>
+          </svg>
+          <span>Pusat Approval</span>
+        </div>
+        <span class="badge badge--warning">25</span>
+      </a>
+
+      <a href="admin-master.html" class="sidebar__link">
+        <div class="sidebar__link-content">
+          <svg class="sidebar__link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 2v20M2 12h20"/>
+          </svg>
+          <span>Master DMA & Wilayah</span>
+        </div>
+      </a>
+    </div>
+
+    <div class="sidebar__footer">
+      <a href="app/index.html" class="btn btn--outline btn--full btn--sm">
+        <span>Mode Mobile Surveyor</span>
+      </a>
+    </div>
+  </aside>
+  <a href="#" class="mobile-drawer-overlay" aria-hidden="true"></a>
+
+  <!-- MAIN CONTENT -->
+  <main class="web-main">
+    <div class="web-container">
+      
+      <!-- BREADCRUMB & HEADER -->
+      <div>
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="dashboard.html" class="breadcrumb__link">Beranda</a>
+          <span class="breadcrumb__separator">/</span>
+          <span class="breadcrumb__current">Katalog Dokumen As-Built</span>
+        </nav>
+        <div class="page-header" style="margin-top: var(--space-2);">
+          <div>
+            <h1 class="page-header__title">Katalog & Arsip Gambar As-Built</h1>
+            <p class="page-header__desc">Pencarian, pemfilteran multi-level DMA, dan riwayat validasi gambar teknik jaringan pipa.</p>
+          </div>
+          <div class="page-header__actions">
+            <a href="#modal-upload" class="btn btn--primary">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="12" y1="5" x2="12" y2="19"/>
+                <line x1="5" y1="12" x2="19" y2="12"/>
+              </svg>
+              <span>+ Unggah Dokumen Baru</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- FILTER TOOLBAR -->
+      <section class="filter-bar">
+        <div class="filter-bar__group" style="flex: 1;">
+          <div class="filter-search-box">
+            <svg class="filter-search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"/>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+            </svg>
+            <input type="search" class="form-control" placeholder="Cari nomor SPK, nama ruas, kontraktor...">
+          </div>
+
+          <select class="form-select" style="width: auto; min-width: 170px;">
+            <option value="">Semua Zona DMA</option>
+            <option value="dma01">DMA 01 - Sukamaju Utr</option>
+            <option value="dma02">DMA 02 - Sukamaju Sel</option>
+            <option value="dma04" selected>DMA 04 - Distribusi Timur</option>
+          </select>
+
+          <select class="form-select" style="width: auto; min-width: 160px;">
+            <option value="">Semua Tipe Pipa</option>
+            <option value="hdpe">HDPE PN-10/16</option>
+            <option value="pvc">PVC Standard</option>
+            <option value="steel">Steel Pipa Induk</option>
+          </select>
+        </div>
+
+        <div class="chip-group">
+          <a href="#" class="chip chip--active">Semua</a>
+          <a href="#" class="chip">Menunggu L2 (8)</a>
+          <a href="#" class="chip">Disetujui (1,150)</a>
+          <a href="#" class="chip">Revisi (12)</a>
+        </div>
+      </section>
+
+      <!-- DATA TABLE AS-BUILT -->
+      <section class="card">
+        <div class="table-container">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>No SPK & Dokumen</th>
+                <th>Pekerjaan & Lokasi Jaringan</th>
+                <th>Spesifikasi Pipa</th>
+                <th>Tanggal Opname</th>
+                <th>Status Persetujuan</th>
+                <th>Format File</th>
+                <th>Aksi</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <span style="font-family: var(--font-mono); font-weight: bold; color: var(--sky-700);">
+                    SPK-2026-DMA04-019
+                  </span><br>
+                  <span class="form-hint">Ver. 1.2 (Final Draft)</span>
+                </td>
+                <td>
+                  <strong>Pemasangan Pipa Distribusi HDPE 150mm</strong><br>
+                  <span class="form-hint">Zona DMA 04 - Jl. Raya Timur KM 14 s/d 16</span>
+                </td>
+                <td>
+                  <span class="badge badge--neutral">HDPE PN-10 Ø 150mm</span><br>
+                  <span class="form-hint">Kedalaman: 1.25 m</span>
+                </td>
+                <td>24 Okt 2026</td>
+                <td>
+                  <span class="badge badge--warning">
+                    <span class="badge__dot"></span> Menunggu L2 (Kasi)
+                  </span>
+                </td>
+                <td>
+                  <span class="badge badge--info">DWG + PDF</span>
+                </td>
+                <td>
+                  <div style="display: flex; gap: var(--space-2);">
+                    <a href="dokumen-detail.html" class="btn btn--primary btn--sm">Buka Viewer</a>
+                    <a href="#modal-upload" class="btn btn--outline btn--sm">Revisi</a>
+                  </div>
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  <span style="font-family: var(--font-mono); font-weight: bold; color: var(--sky-700);">
+                    SPK-2026-DMA02-088
+                  </span><br>
+                  <span class="form-hint">Ver. 1.0 (Lolos L1)</span>
+                </td>
+                <td>
+                  <strong>Pemasangan Katup Sekat & Meter Induk</strong><br>
+                  <span class="form-hint">Zona DMA 02 - Simpang Tiga Kenanga</span>
+                </td>
+                <td>
+                  <span class="badge badge--neutral">Steel Ø 200mm</span><br>
+                  <span class="form-hint">Kedalaman: 1.40 m</span>
+                </td>
+                <td>22 Okt 2026</td>
+                <td>
+                  <span class="badge badge--warning">
+                    <span class="badge__dot"></span> Menunggu L2 (Kasi)
+                  </span>
+                </td>
+                <td>
+                  <span class="badge badge--info">CAD + SVG</span>
+                </td>
+                <td>
+                  <div style="display: flex; gap: var(--space-2);">
+                    <a href="dokumen-detail.html" class="btn btn--primary btn--sm">Buka Viewer</a>
+                  </div>
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  <span style="font-family: var(--font-mono); font-weight: bold; color: var(--sky-700);">
+                    SPK-2026-DMA04-007
+                  </span><br>
+                  <span class="form-hint">Ver. 2.0 (Resmi Berlaku)</span>
+                </td>
+                <td>
+                  <strong>Jaringan Tersier Sambungan Rumah (SR)</strong><br>
+                  <span class="form-hint">Perumahan Griya Tirta Blok A-C</span>
+                </td>
+                <td>
+                  <span class="badge badge--neutral">HDPE Ø 63mm / 25mm</span><br>
+                  <span class="form-hint">Total: 42 SR</span>
+                </td>
+                <td>15 Okt 2026</td>
+                <td>
+                  <span class="badge badge--success">
+                    <span class="badge__dot"></span> Disetujui (SK Direksi)
+                  </span>
+                </td>
+                <td>
+                  <span class="badge badge--info">PDF TTD Digital</span>
+                </td>
+                <td>
+                  <a href="dokumen-detail.html" class="btn btn--outline btn--sm">Arsip Resmi</a>
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  <span style="font-family: var(--font-mono); font-weight: bold; color: var(--sky-700);">
+                    SPK-2026-DMA01-042
+                  </span><br>
+                  <span class="form-hint">Ver. 1.1 (Perbaikan Ditolak)</span>
+                </td>
+                <td>
+                  <strong>Relokasi Pipa Akibat Pelebaran Jalan Pemda</strong><br>
+                  <span class="form-hint">Zona DMA 01 - Ruas Sukamaju Barat</span>
+                </td>
+                <td>
+                  <span class="badge badge--neutral">PVC Ø 90mm</span><br>
+                  <span class="form-hint">Kedalaman: 0.90 m</span>
+                </td>
+                <td>18 Okt 2026</td>
+                <td>
+                  <span class="badge badge--danger">
+                    <span class="badge__dot"></span> Deviasi Kritis L1
+                  </span>
+                </td>
+                <td>
+                  <span class="badge badge--info">DWG</span>
+                </td>
+                <td>
+                  <a href="opname-monitoring.html" class="btn btn--outline btn--sm">Cek Deviasi</a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- PAGINATION BAR -->
+        <div class="card__footer" style="justify-content: space-between;">
+          <span class="form-hint">Menampilkan 1 s/d 4 dari 1,248 berkas terdata</span>
+          <div style="display: flex; gap: var(--space-2);">
+            <button type="button" class="btn btn--outline btn--sm" disabled>« Sebelumnya</button>
+            <button type="button" class="btn btn--primary btn--sm">1</button>
+            <button type="button" class="btn btn--outline btn--sm">2</button>
+            <button type="button" class="btn btn--outline btn--sm">3</button>
+            <button type="button" class="btn btn--outline btn--sm">Selanjutnya »</button>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- MODAL :target UNGGAH DOKUMEN AS-BUILT -->
+  <div class="modal" id="modal-upload" role="dialog" aria-modal="true" aria-labelledby="modal-upload-title">
+    <a href="#" class="modal__backdrop" aria-label="Tutup Dialog"></a>
+    <div class="modal__dialog modal__dialog--lg">
+      <div class="modal__header">
+        <h2 class="modal__title" id="modal-upload-title">Unggah Berkas Gambar As-Built Baru</h2>
+        <a href="#" class="modal__close" aria-label="Tutup">&times;</a>
+      </div>
+      <form action="dokumen-list.html" method="get">
+        <div class="modal__body">
+          <div class="grid-2col" style="gap: var(--space-4);">
+            <div class="form-group">
+              <label for="no-spk" class="form-label">Nomor SPK Kontrak <span class="required">*</span></label>
+              <input type="text" id="no-spk" class="form-control" placeholder="Misal: SPK-2026-DMA04-025" required>
+            </div>
+            <div class="form-group">
+              <label for="zona-dma" class="form-label">Zona Wilayah / DMA <span class="required">*</span></label>
+              <select id="zona-dma" class="form-select" required>
+                <option value="">Pilih Zona DMA</option>
+                <option value="01">DMA 01 - Sukamaju Utara</option>
+                <option value="02">DMA 02 - Sukamaju Selatan</option>
+                <option value="04">DMA 04 - Distribusi Timur</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="nama-pekerjaan" class="form-label">Nama Pekerjaan Jaringan <span class="required">*</span></label>
+            <input type="text" id="nama-pekerjaan" class="form-control" placeholder="Misal: Penggantian Pipa Distribusi Utama Segmen Timur" required>
+          </div>
+
+          <div class="grid-2col" style="gap: var(--space-4);">
+            <div class="form-group">
+              <label for="jenis-pipa" class="form-label">Material & Diameter Pipa</label>
+              <input type="text" id="jenis-pipa" class="form-control" placeholder="Contoh: HDPE PN-10 Diameter 150mm">
+            </div>
+            <div class="form-group">
+              <label for="kontraktor" class="form-label">Nama Kontraktor Pelaksana</label>
+              <input type="text" id="kontraktor" class="form-control" placeholder="PT / CV Rekanan PDAM">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Berkas Gambar Kerja CAD / As-Built PDF <span class="required">*</span></label>
+            <div class="upload-dropzone">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color: var(--color-primary-base);">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                <polyline points="17 8 12 3 7 8"/>
+                <line x1="12" y1="3" x2="12" y2="15"/>
+              </svg>
+              <div>
+                <strong>Klik untuk memilih berkas CAD / PDF</strong> atau seret ke area ini
+              </div>
+              <span class="form-hint">Mendukung format: DWG, DXF, GeoJSON, Shapefile, PDF (Maks. 50 MB)</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="catatan-asbuilt" class="form-label">Catatan Teknis Deviasi Awal</label>
+            <textarea id="catatan-asbuilt" class="form-control" placeholder="Tuliskan catatan perubahan jalur bila berbeda dari DED perencanaan..."></textarea>
+          </div>
+        </div>
+
+        <div class="modal__footer">
+          <a href="#" class="btn btn--outline">Batal</a>
+          <button type="submit" class="btn btn--primary">
+            <span>Simpan & Kirim ke Pengawas (L1)</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+</body>
+</html>

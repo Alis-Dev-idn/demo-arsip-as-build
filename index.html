@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Sistem Arsip As-Built Drawing & Opname Lapangan PDAM</title>
+  <link rel="stylesheet" href="css/00-tokens.css">
+  <link rel="stylesheet" href="css/01-reset.css">
+  <link rel="stylesheet" href="css/02-components.css">
+  <link rel="stylesheet" href="css/03-web-layout.css">
+  <style>
+    .auth-page {
+      min-height: 100vh;
+      min-height: 100dvh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at 10% 20%, rgba(2, 132, 199, 0.08) 0%, transparent 40%),
+                  radial-gradient(circle at 90% 80%, rgba(14, 165, 233, 0.08) 0%, transparent 40%),
+                  var(--color-bg-base);
+      padding: var(--space-4);
+    }
+    .auth-card {
+      width: 100%;
+      max-width: 480px;
+      background-color: var(--color-bg-card);
+      border: 1px solid var(--color-border-subtle);
+      border-radius: var(--radius-2xl);
+      box-shadow: var(--shadow-lg);
+      padding: var(--space-8);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-6);
+    }
+    .auth-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: var(--space-2);
+    }
+    .auth-logo {
+      width: 52px;
+      height: 52px;
+      border-radius: var(--radius-xl);
+      background: linear-gradient(135deg, var(--sky-600), var(--sky-800));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      box-shadow: var(--shadow-md);
+      margin-bottom: var(--space-2);
+    }
+    .role-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-2);
+      margin-bottom: var(--space-4);
+    }
+    .role-card {
+      display: flex;
+      flex-direction: column;
+      padding: var(--space-3);
+      border: 1.5px solid var(--color-border-default);
+      border-radius: var(--radius-lg);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      text-decoration: none;
+      color: var(--color-text-main);
+      background-color: var(--color-bg-card-subtle);
+    }
+    .role-card:hover {
+      border-color: var(--color-primary-base);
+      background-color: var(--color-primary-surface);
+      transform: translateY(-2px);
+    }
+    .role-card__title {
+      font-size: var(--font-xs);
+      font-weight: var(--font-bold);
+      color: var(--color-text-main);
+    }
+    .role-card__desc {
+      font-size: 0.7rem;
+      color: var(--color-text-muted);
+    }
+  </style>
+</head>
+<body class="auth-page">
+  <main class="auth-card">
+    <div class="auth-header">
+      <div class="auth-logo" aria-hidden="true">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+        </svg>
+      </div>
+      <h1>PDAM Tirta Asri</h1>
+      <p class="form-hint">Sistem Informasi Arsip As-Built Drawing & Opname Lapangan</p>
+    </div>
+
+    <!-- Simulasi Peran Cepat -->
+    <div>
+      <span class="form-label" style="margin-bottom: var(--space-2);">Pilih Profil Akses Cepat (Simulasi Role):</span>
+      <div class="role-grid">
+        <a href="dashboard.html" class="role-card">
+          <span class="role-card__title">Approver L2 (Kasi)</span>
+          <span class="role-card__desc">Review teknis & deviasi</span>
+        </a>
+        <a href="approval-inbox.html" class="role-card">
+          <span class="role-card__title">Pengawas L1 / L3</span>
+          <span class="role-card__desc">Verifikasi lapangan & SK</span>
+        </a>
+        <a href="dokumen-list.html" class="role-card">
+          <span class="role-card__title">Staff GIS / Admin</span>
+          <span class="role-card__desc">Katalog gambar & master</span>
+        </a>
+        <a href="app/index.html" class="role-card" style="border-color: var(--sky-400); background-color: var(--sky-50);">
+          <span class="role-card__title" style="color: var(--sky-700);">📱 App Lapangan</span>
+          <span class="role-card__desc">Mode mobile surveyor</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Form Login Standar -->
+    <form action="dashboard.html" method="get">
+      <div class="form-group">
+        <label for="username" class="form-label">ID Petugas / NIP <span class="required">*</span></label>
+        <input type="text" id="username" name="username" class="form-control" placeholder="Contoh: 19880415-PDAM" required value="19880415-PDAM">
+      </div>
+
+      <div class="form-group">
+        <label for="password" class="form-label">Kata Sandi <span class="required">*</span></label>
+        <input type="password" id="password" name="password" class="form-control" placeholder="••••••••" required value="pdamasri2026">
+      </div>
+
+      <div class="form-group">
+        <label for="dma-zone" class="form-label">Wilayah DMA Aktif</label>
+        <select id="dma-zone" name="dma-zone" class="form-select">
+          <option value="dma-all">Semua Wilayah Pelayanan (Kantor Pusat)</option>
+          <option value="dma-01">DMA 01 - Sukamaju Utara</option>
+          <option value="dma-02">DMA 02 - Sukamaju Selatan</option>
+          <option value="dma-04" selected>DMA 04 - Distribusi Utama Timur</option>
+        </select>
+      </div>
+
+      <button type="submit" class="btn btn--primary btn--full btn--lg">
+        <span>Masuk ke Dashboard Web</span>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </button>
+    </form>
+
+    <div style="text-align: center; border-top: 1px solid var(--color-border-subtle); padding-top: var(--space-4);">
+      <p class="form-hint">Petugas Lapangan di lokasi blank spot? 
+        <a href="app/index.html" style="color: var(--color-primary-base); font-weight: var(--font-bold); text-decoration: underline;">
+          Buka Tampilan Mobile App (PWA Mock)
+        </a>
+      </p>
+    </div>
+  </main>
+</body>
+</html>

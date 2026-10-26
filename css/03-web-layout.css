@@ -1,0 +1,412 @@
+/**
+ * ====================================================================
+ * ARSIP AS-BUILT DRAWING & OPNAME LAPANGAN (PDAM / BUMD)
+ * 03-web-layout.css - Web Layout & Responsive Grid
+ * ====================================================================
+ * Layout Desktop (1280px+), Tablet (768px-1024px), Mobile (<768px)
+ * Zero horizontal overflow pada layar 360px
+ * Sidebar Drawer CSS-only via :target
+ * ====================================================================
+ */
+
+/* ====================================================================
+   1. APP SHELL LAYOUT (DESKTOP FIRST)
+   ==================================================================== */
+.web-shell {
+  display: flex;
+  min-height: 100vh;
+  min-height: 100dvh;
+  background-color: var(--color-bg-base);
+}
+
+/* TOPBAR */
+.web-topbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--topbar-height);
+  background-color: var(--color-bg-surface);
+  border-bottom: 1px solid var(--color-border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--space-6);
+  z-index: 30;
+  box-shadow: var(--shadow-xs);
+}
+
+.web-topbar__brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-weight: var(--font-bold);
+  font-size: var(--font-base);
+  color: var(--color-text-main);
+  text-decoration: none;
+}
+
+.web-topbar__logo {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-md);
+  background: linear-gradient(135deg, var(--sky-600), var(--sky-800));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+}
+
+.web-topbar__brand-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.web-topbar__brand-title {
+  font-size: var(--font-sm);
+  font-weight: var(--font-bold);
+  color: var(--color-text-main);
+  letter-spacing: -0.01em;
+}
+
+.web-topbar__brand-sub {
+  font-size: var(--font-xs);
+  font-weight: var(--font-medium);
+  color: var(--color-primary-base);
+}
+
+.web-topbar__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.web-topbar__role-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-1) var(--space-3);
+  background-color: var(--slate-100);
+  border-radius: var(--radius-full);
+  font-size: var(--font-xs);
+  font-weight: var(--font-medium);
+  color: var(--color-text-muted);
+}
+
+.web-topbar__menu-toggle {
+  display: none;
+}
+
+/* SIDEBAR DESKTOP */
+.web-sidebar {
+  width: var(--sidebar-width);
+  position: fixed;
+  top: var(--topbar-height);
+  bottom: 0;
+  left: 0;
+  background-color: var(--color-bg-surface);
+  border-right: 1px solid var(--color-border-subtle);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: var(--space-4) 0;
+  z-index: 25;
+  overflow-y: auto;
+}
+
+.sidebar__section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  padding: 0 var(--space-3);
+}
+
+.sidebar__heading {
+  font-size: var(--font-xs);
+  font-weight: var(--font-bold);
+  color: var(--color-text-subtle);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: var(--space-2) var(--space-3);
+}
+
+.sidebar__link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-2) var(--space-3);
+  font-size: var(--font-sm);
+  font-weight: var(--font-medium);
+  color: var(--color-text-muted);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast);
+  min-height: 44px;
+}
+
+.sidebar__link-content {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.sidebar__link-icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.sidebar__link:hover {
+  background-color: var(--slate-100);
+  color: var(--color-text-main);
+}
+
+.sidebar__link.is-active,
+.sidebar__link--active {
+  background-color: var(--color-primary-surface);
+  color: var(--color-primary-base);
+  font-weight: var(--font-semibold);
+}
+
+.sidebar__footer {
+  padding: var(--space-4) var(--space-3) 0;
+  border-top: 1px solid var(--color-border-subtle);
+}
+
+/* MAIN CONTENT AREA */
+.web-main {
+  flex: 1;
+  margin-left: var(--sidebar-width);
+  margin-top: var(--topbar-height);
+  padding: var(--space-6);
+  min-width: 0; /* Mencegah overflow flexbox */
+  background-color: var(--color-bg-base);
+  min-height: calc(100vh - var(--topbar-height));
+}
+
+.web-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+/* ====================================================================
+   2. BREADCRUMB & PAGE HEADER
+   ==================================================================== */
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--font-xs);
+  color: var(--color-text-muted);
+  flex-wrap: wrap;
+}
+
+.breadcrumb__separator {
+  color: var(--color-text-subtle);
+}
+
+.breadcrumb__link:hover {
+  color: var(--color-primary-base);
+  text-decoration: underline;
+}
+
+.breadcrumb__current {
+  color: var(--color-text-main);
+  font-weight: var(--font-semibold);
+}
+
+.page-header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+@media (min-width: 768px) {
+  .page-header {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.page-header__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.page-header__title {
+  font-size: var(--font-2xl);
+  font-weight: var(--font-bold);
+  color: var(--color-text-main);
+}
+
+.page-header__desc {
+  font-size: var(--font-sm);
+  color: var(--color-text-muted);
+}
+
+/* ====================================================================
+   3. GRID LAYOUT SYSTEM
+   ==================================================================== */
+.grid-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--space-4);
+}
+
+.grid-2col {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+}
+
+@media (min-width: 1024px) {
+  .grid-2col {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.grid-split-viewer {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+}
+
+@media (min-width: 1025px) {
+  .grid-split-viewer {
+    grid-template-columns: 65% calc(35% - var(--space-6));
+    align-items: start;
+  }
+}
+
+/* ====================================================================
+   4. FILTER BAR / SEARCH TOOLBAR
+   ==================================================================== */
+.filter-bar {
+  background-color: var(--color-bg-card);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-xl);
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  box-shadow: var(--shadow-xs);
+}
+
+@media (min-width: 768px) {
+  .filter-bar {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.filter-bar__group {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.filter-search-box {
+  position: relative;
+  min-width: 260px;
+  flex: 1;
+}
+
+.filter-search-box .form-control {
+  padding-left: var(--space-10);
+}
+
+.filter-search-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-text-subtle);
+  pointer-events: none;
+}
+
+/* ====================================================================
+   5. MOBILE DRAWER SIDEBAR DENGAN :target
+   ==================================================================== */
+.mobile-drawer-overlay {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .web-sidebar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: -280px;
+    width: 280px;
+    transition: transform var(--transition-normal);
+    z-index: 100;
+    box-shadow: var(--shadow-xl);
+  }
+
+  .web-main {
+    margin-left: 0;
+    padding: var(--space-4);
+  }
+
+  .web-topbar {
+    padding: 0 var(--space-4);
+  }
+
+  .web-topbar__menu-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--min-touch-target);
+    height: var(--min-touch-target);
+    border-radius: var(--radius-md);
+    color: var(--color-text-main);
+  }
+
+  /* Drawer Target */
+  #sidebar-drawer:target {
+    transform: translateX(280px);
+  }
+
+  #sidebar-drawer:target + .mobile-drawer-overlay {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background-color: var(--color-bg-overlay);
+    backdrop-filter: blur(2px);
+    z-index: 99;
+  }
+}
+
+/* TABLET MODE (768px - 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+  :root {
+    --sidebar-width: var(--sidebar-collapsed-width);
+  }
+
+  .sidebar__heading,
+  .sidebar__link span,
+  .sidebar__link .badge {
+    display: none;
+  }
+
+  .sidebar__link {
+    justify-content: center;
+    padding: var(--space-2);
+  }
+
+  .sidebar__link-content {
+    gap: 0;
+  }
+
+  .sidebar__link-icon {
+    width: 24px;
+    height: 24px;
+  }
+}

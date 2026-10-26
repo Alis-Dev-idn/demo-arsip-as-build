@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Monitoring Opname Lapangan - As-Built Drawing PDAM</title>
+  <link rel="stylesheet" href="css/00-tokens.css">
+  <link rel="stylesheet" href="css/01-reset.css">
+  <link rel="stylesheet" href="css/02-components.css">
+  <link rel="stylesheet" href="css/03-web-layout.css">
+</head>
+<body class="web-shell">
+
+  <!-- TOPBAR -->
+  <header class="web-topbar">
+    <div style="display: flex; align-items: center; gap: var(--space-3);">
+      <a href="#sidebar-drawer" class="web-topbar__menu-toggle" aria-label="Buka Menu Navigasi">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </a>
+      <a href="dashboard.html" class="web-topbar__brand">
+        <div class="web-topbar__logo">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+          </svg>
+        </div>
+        <div class="web-topbar__brand-text">
+          <span class="web-topbar__brand-title">PDAM Tirta Asri</span>
+          <span class="web-topbar__brand-sub">Arsip As-Built Drawing</span>
+        </div>
+      </a>
+    </div>
+
+    <div class="web-topbar__actions">
+      <div class="web-topbar__role-pill">
+        <span class="badge__dot" style="background-color: var(--color-success-base);"></span>
+        <span>Kasi Perencanaan (L2)</span>
+      </div>
+      <a href="app/index.html" class="btn btn--outline btn--sm">App Lapangan</a>
+      <a href="index.html" class="btn btn--secondary btn--sm">Keluar</a>
+    </div>
+  </header>
+
+  <!-- SIDEBAR NAVIGASI -->
+  <aside class="web-sidebar" id="sidebar-drawer">
+    <div class="sidebar__section">
+      <span class="sidebar__heading">Menu Utama</span>
+      <a href="dashboard.html" class="sidebar__link">
+        <div class="sidebar__link-content">
+          <svg class="sidebar__link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="3" width="7" height="7"/>
+            <rect x="14" y="3" width="7" height="7"/>
+            <rect x="14" y="14" width="7" height="7"/>
+            <rect x="3" y="14" width="7" height="7"/>
+          </svg>
+          <span>Dashboard</span>
+        </div>
+      </a>
+
+      <a href="dokumen-list.html" class="sidebar__link">
+        <div class="sidebar__link-content">
+          <svg class="sidebar__link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+            <polyline points="14 2 14 8 20 8"/>
+          </svg>
+          <span>Katalog Dokumen</span>
+        </div>
+      </a>
+
+      <a href="opname-monitoring.html" class="sidebar__link is-active">
+        <div class="sidebar__link-content">
+          <svg class="sidebar__link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="12" y1="8" x2="12" y2="12"/>
+            <line x1="12" y1="16" x2="12.01" y2="16"/>
+          </svg>
+          <span>Monitoring Opname</span>
+        </div>
+      </a>
+
+      <a href="approval-inbox.html" class="sidebar__link">
+        <div class="sidebar__link-content">
+          <svg class="sidebar__link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+            <polyline points="22 4 12 14.01 9 11.01"/>
+          </svg>
+          <span>Pusat Approval</span>
+        </div>
+        <span class="badge badge--warning">25</span>
+      </a>
+
+      <a href="admin-master.html" class="sidebar__link">
+        <div class="sidebar__link-content">
+          <svg class="sidebar__link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 2v20M2 12h20"/>
+          </svg>
+          <span>Master DMA & Wilayah</span>
+        </div>
+      </a>
+    </div>
+
+    <div class="sidebar__footer">
+      <a href="app/index.html" class="btn btn--outline btn--full btn--sm">
+        <span>Mode Mobile Surveyor</span>
+      </a>
+    </div>
+  </aside>
+  <a href="#" class="mobile-drawer-overlay" aria-hidden="true"></a>
+
+  <!-- MAIN CONTENT -->
+  <main class="web-main">
+    <div class="web-container">
+      
+      <!-- BREADCRUMB & HEADER -->
+      <div>
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="dashboard.html" class="breadcrumb__link">Beranda</a>
+          <span class="breadcrumb__separator">/</span>
+          <span class="breadcrumb__current">Monitoring Opname Lapangan</span>
+        </nav>
+        <div class="page-header" style="margin-top: var(--space-2);">
+          <div>
+            <h1 class="page-header__title">Monitoring Opname Fisik & Matriks Deviasi DED</h1>
+            <p class="page-header__desc">Inspeksi parameter fisik aktual pipa, deviasi elevasi kedalaman, dan validasi bukti foto geotagged.</p>
+          </div>
+          <div class="page-header__actions">
+            <a href="dokumen-detail.html" class="btn btn--primary">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                <circle cx="12" cy="12" r="3"/>
+              </svg>
+              <span>Buka Viewer Gambar Terkait</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- KARTU RINGKASAN MONITORING SPK TERPILIH -->
+      <section class="card" style="border-left: 4px solid var(--color-primary-base);">
+        <div class="card__body" style="display: flex; flex-wrap: wrap; gap: var(--space-6); justify-content: space-between; align-items: center;">
+          <div>
+            <span class="badge badge--info" style="margin-bottom: var(--space-2);">SPK Sedang Dimonitor</span>
+            <h2 style="font-size: var(--font-xl);">SPK-2026-DMA04-019 (Pemasangan Pipa HDPE 150mm)</h2>
+            <p class="form-hint" style="margin-top: 4px;">Zona DMA 04 &bull; Surveyor: Ir. Haryanto &bull; Tanggal Selesai Opname: 24 Oktober 2026</p>
+          </div>
+          <div style="display: flex; gap: var(--space-4); align-items: center;">
+            <div style="text-align: right;">
+              <span class="form-hint">Tingkat Kesesuaian DED</span>
+              <div style="font-size: var(--font-2xl); font-weight: bold; color: var(--color-success-text);">98.2%</div>
+            </div>
+            <span class="badge badge--success" style="padding: var(--space-2) var(--space-3); font-size: var(--font-sm);">
+              ✔ Batas Deviasi Aman
+            </span>
+          </div>
+        </div>
+      </section>
+
+      <!-- MATRIKS PERBANDINGAN: DED (DESAIN) VS AS-BUILT (TERPASANG FISIK) -->
+      <section class="card">
+        <div class="card__header">
+          <h2 class="card__title">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
+              <polyline points="17 6 23 6 23 12"/>
+            </svg>
+            <span>Matriks Perbandingan DED vs Hasil Opname Fisik</span>
+          </h2>
+          <span class="badge badge--neutral">Standar Toleransi SNI / PDAM</span>
+        </div>
+
+        <div class="table-container">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Parameter Teknis</th>
+                <th>Spesifikasi DED Awal</th>
+                <th>Hasil Opname Lapangan</th>
+                <th>Selisih / Deviasi</th>
+                <th>Batas Toleransi Izin</th>
+                <th>Status Validasi</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Diameter Pipa Luar (OD)</strong></td>
+                <td>150 mm (HDPE PN-10)</td>
+                <td>150 mm (HDPE PN-10)</td>
+                <td>0.0 mm</td>
+                <td>&plusmn; 0.5 mm</td>
+                <td><span class="badge badge--success">Sesuai 100%</span></td>
+              </tr>
+              <tr>
+                <td><strong>Total Panjang Jalur Bentang</strong></td>
+                <td>1,238.00 meter</td>
+                <td>1,240.20 meter</td>
+                <td>+2.20 meter (+0.17%)</td>
+                <td>Maksimal +2.0%</td>
+                <td><span class="badge badge--success">Toleransi Wajar</span></td>
+              </tr>
+              <tr>
+                <td><strong>Kedalaman Galian Rata-rata</strong></td>
+                <td>1.20 meter</td>
+                <td>1.25 meter</td>
+                <td>+0.05 meter</td>
+                <td>&plusmn; 0.15 meter</td>
+                <td><span class="badge badge--success">Memenuhi Syarat</span></td>
+              </tr>
+              <tr>
+                <td><strong>Koordinat Gate Valve (GV-01)</strong></td>
+                <td>Lat: -6.20880, Long: 106.84560</td>
+                <td>Lat: -6.20882, Long: 106.84561</td>
+                <td>Geser 1.2 meter (Utara)</td>
+                <td>Maks. 2.0m (Utilitas lain)</td>
+                <td><span class="badge badge--warning">Ada Deviasi (Wajar)</span></td>
+              </tr>
+              <tr>
+                <td><strong>Tipe Sambungan Pipa</strong></td>
+                <td>Butt Fusion / Electrofusion</td>
+                <td>Butt Fusion Terverifikasi</td>
+                <td>0 (Identik)</td>
+                <td>Harus Kedap Bocor</td>
+                <td><span class="badge badge--success">Lolos Uji Tekan</span></td>
+              </tr>
+              <tr>
+                <td><strong>Tekanan Uji Hidrostatis</strong></td>
+                <td>10.0 Bar (1 Jam)</td>
+                <td>10.2 Bar (Stabil 1.5 Jam)</td>
+                <td>+0.2 Bar</td>
+                <td>Min. 10.0 Bar</td>
+                <td><span class="badge badge--success">Lolos Uji 100%</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- DOKUMENTASI FOTO GEOTAGGED LAPANGAN -->
+      <section class="card">
+        <div class="card__header">
+          <h2 class="card__title">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+              <circle cx="12" cy="13" r="4"/>
+            </svg>
+            <span>Dokumentasi Foto Geotagged dari Aplikasi Petugas</span>
+          </h2>
+          <span class="badge badge--info">4 Foto Terverifikasi GPS</span>
+        </div>
+
+        <div class="card__body">
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: var(--space-4);">
+            
+            <!-- FOTO MOCK 1 -->
+            <div style="border: 1px solid var(--color-border-subtle); border-radius: var(--radius-lg); overflow: hidden; background-color: var(--color-bg-card-subtle);">
+              <div style="height: 150px; background: linear-gradient(135deg, #0f172a, #334155); display: flex; align-items: center; justify-content: center; color: #94a3b8; position: relative;">
+                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                  <circle cx="8.5" cy="8.5" r="1.5"/>
+                  <polyline points="21 15 16 10 5 21"/>
+                </svg>
+                <span class="badge badge--success" style="position: absolute; top: 8px; right: 8px; font-size: 10px;">
+                  GPS Lock OK
+                </span>
+              </div>
+              <div style="padding: var(--space-3);">
+                <strong style="font-size: var(--font-sm);">Galian & Kedalaman Pipa</strong>
+                <p class="form-hint" style="font-size: 0.75rem; margin-top: 2px;">
+                  STA 0+150 &bull; Kedalaman 1.25m terukur mistar<br>
+                  Lat: -6.20880, Long: 106.84560
+                </p>
+              </div>
+            </div>
+
+            <!-- FOTO MOCK 2 -->
+            <div style="border: 1px solid var(--color-border-subtle); border-radius: var(--radius-lg); overflow: hidden; background-color: var(--color-bg-card-subtle);">
+              <div style="height: 150px; background: linear-gradient(135deg, #075985, #0284c7); display: flex; align-items: center; justify-content: center; color: #ffffff; position: relative;">
+                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                </svg>
+                <span class="badge badge--success" style="position: absolute; top: 8px; right: 8px; font-size: 10px;">
+                  GPS Lock OK
+                </span>
+              </div>
+              <div style="padding: var(--space-3);">
+                <strong style="font-size: var(--font-sm);">Penyambungan Butt Fusion</strong>
+                <p class="form-hint" style="font-size: 0.75rem; margin-top: 2px;">
+                  Pipa HDPE Ø 150mm &bull; Suhu 210°C<br>
+                  Lat: -6.20885, Long: 106.84575
+                </p>
+              </div>
+            </div>
+
+            <!-- FOTO MOCK 3 -->
+            <div style="border: 1px solid var(--color-border-subtle); border-radius: var(--radius-lg); overflow: hidden; background-color: var(--color-bg-card-subtle);">
+              <div style="height: 150px; background: linear-gradient(135deg, #166534, #15803d); display: flex; align-items: center; justify-content: center; color: #ffffff; position: relative;">
+                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <circle cx="12" cy="12" r="10"/>
+                  <polygon points="10 8 16 12 10 16 10 8"/>
+                </svg>
+                <span class="badge badge--success" style="position: absolute; top: 8px; right: 8px; font-size: 10px;">
+                  GPS Lock OK
+                </span>
+              </div>
+              <div style="padding: var(--space-3);">
+                <strong style="font-size: var(--font-sm);">Pemasangan Gate Valve 150mm</strong>
+                <p class="form-hint" style="font-size: 0.75rem; margin-top: 2px;">
+                  STA 0+200 &bull; Lengkap Box Valve Cor<br>
+                  Lat: -6.20882, Long: 106.84561
+                </p>
+              </div>
+            </div>
+
+            <!-- FOTO MOCK 4 -->
+            <div style="border: 1px solid var(--color-border-subtle); border-radius: var(--radius-lg); overflow: hidden; background-color: var(--color-bg-card-subtle);">
+              <div style="height: 150px; background: linear-gradient(135deg, #9f1239, #e11d48); display: flex; align-items: center; justify-content: center; color: #ffffff; position: relative;">
+                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                  <polyline points="22 4 12 14.01 9 11.01"/>
+                </svg>
+                <span class="badge badge--success" style="position: absolute; top: 8px; right: 8px; font-size: 10px;">
+                  GPS Lock OK
+                </span>
+              </div>
+              <div style="padding: var(--space-3);">
+                <strong style="font-size: var(--font-sm);">Uji Tekan Hidrostatis (Manometer)</strong>
+                <p class="form-hint" style="font-size: 0.75rem; margin-top: 2px;">
+                  STA 0+000 &bull; Tekanan 10.2 Bar Konstan<br>
+                  Disaksikan Pengawas Lapangan PDAM
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+</body>
+</html>

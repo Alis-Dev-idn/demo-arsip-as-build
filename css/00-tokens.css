@@ -1,0 +1,239 @@
+/**
+ * ====================================================================
+ * ARSIP AS-BUILT DRAWING & OPNAME LAPANGAN (PDAM / BUMD)
+ * 00-tokens.css - Design Tokens & Global CSS Variables
+ * ====================================================================
+ * Mematuhi: .agent/rules/03-desain-ui.md & WCAG 2.1 AA
+ * Spacing: Skala kelipatan 4px & 8px
+ * Radius: Sudut membulat (tanpa sudut lancip)
+ * ====================================================================
+ */
+
+:root {
+  /* --- PALET WARNA INTI (MENGACU SLATE & SKY PALETTE) --- */
+  --sky-50: #f0f9ff;
+  --sky-100: #e0f2fe;
+  --sky-200: #bae6fd;
+  --sky-300: #7dd3fc;
+  --sky-400: #38bdf8;
+  --sky-500: #0ea5e9;
+  --sky-600: #0284c7; /* Primary Brand PDAM */
+  --sky-700: #0369a1; /* Primary Hover / High Contrast */
+  --sky-800: #075985;
+  --sky-900: #0c4a6e;
+  --sky-950: #082f49;
+
+  --slate-50: #f8fafc;
+  --slate-100: #f1f5f9;
+  --slate-200: #e2e8f0;
+  --slate-300: #cbd5e1;
+  --slate-400: #94a3b8;
+  --slate-500: #64748b;
+  --slate-600: #475569;
+  --slate-700: #334155;
+  --slate-800: #1e293b;
+  --slate-900: #0f172a;
+  --slate-950: #020617;
+
+  /* Status Colors (WCAG AA Compliant Text & BG Pairs) */
+  --green-50: #f0fdf4;
+  --green-100: #dcfce7;
+  --green-600: #16a34a;
+  --green-700: #15803d; /* Text contrast >= 4.5:1 on green-100 */
+  --green-800: #166534;
+
+  --amber-50: #fffbeb;
+  --amber-100: #fef3c7;
+  --amber-600: #d97706;
+  --amber-700: #b45309; /* Text contrast >= 4.5:1 on amber-100 */
+  --amber-800: #92400e;
+
+  --rose-50: #fff1f2;
+  --rose-100: #ffe4e6;
+  --rose-600: #e11d48;
+  --rose-700: #be123c; /* Text contrast >= 4.5:1 on rose-100 */
+  --rose-800: #9f1239;
+
+  --blue-50: #eff6ff;
+  --blue-100: #dbeafe;
+  --blue-600: #2563eb;
+  --blue-700: #1d4ed8;
+
+  /* --- SEMANTIC TOKENS: TEMA TERANG (DEFAULT) --- */
+  --color-primary-base: var(--sky-600);
+  --color-primary-hover: var(--sky-700);
+  --color-primary-active: var(--sky-800);
+  --color-primary-surface: var(--sky-50);
+  --color-primary-subtle: var(--sky-100);
+  --color-primary-text: #ffffff;
+  --color-primary-border: var(--sky-300);
+
+  --color-bg-base: var(--slate-50);
+  --color-bg-surface: #ffffff;
+  --color-bg-card: #ffffff;
+  --color-bg-card-subtle: var(--slate-50);
+  --color-bg-alt: var(--slate-100);
+  --color-bg-overlay: rgba(15, 23, 42, 0.6);
+
+  --color-text-main: var(--slate-900);
+  --color-text-muted: var(--slate-600);
+  --color-text-subtle: var(--slate-400);
+  --color-text-inverse: #ffffff;
+
+  --color-border-subtle: var(--slate-200);
+  --color-border-default: var(--slate-300);
+  --color-border-strong: var(--slate-400);
+
+  /* Status Semantic */
+  --color-success-bg: var(--green-100);
+  --color-success-text: var(--green-700);
+  --color-success-border: #86efac;
+  --color-success-base: var(--green-600);
+
+  --color-warning-bg: var(--amber-100);
+  --color-warning-text: var(--amber-800);
+  --color-warning-border: #fde047;
+  --color-warning-base: var(--amber-600);
+
+  --color-danger-bg: var(--rose-100);
+  --color-danger-text: var(--rose-700);
+  --color-danger-border: #fca5a5;
+  --color-danger-base: var(--rose-600);
+
+  --color-info-bg: var(--blue-100);
+  --color-info-text: var(--blue-700);
+  --color-info-border: #93c5fd;
+  --color-info-base: var(--blue-600);
+
+  /* Offline Indicator */
+  --color-offline-bg: #fef3c7;
+  --color-offline-text: #92400e;
+  --color-offline-border: #f59e0b;
+
+  /* --- SPACING TOKENS (GRID KELIPATAN 4PX / 8PX) --- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-7: 28px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+
+  /* --- BORDER RADIUS (TANPA SUDUT LANCIP) --- */
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-2xl: 20px;
+  --radius-3xl: 28px;
+  --radius-full: 9999px;
+
+  /* --- TYPOGRAPHY --- */
+  --font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+
+  --font-xs: 0.75rem;    /* 12px */
+  --font-sm: 0.875rem;   /* 14px */
+  --font-base: 1rem;     /* 16px */
+  --font-lg: 1.125rem;   /* 18px */
+  --font-xl: 1.25rem;    /* 20px */
+  --font-2xl: 1.5rem;    /* 24px */
+  --font-3xl: 1.875rem;  /* 30px */
+
+  --font-regular: 400;
+  --font-medium: 500;
+  --font-semibold: 600;
+  --font-bold: 700;
+
+  --leading-none: 1;
+  --leading-tight: 1.25;
+  --leading-snug: 1.375;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.625;
+
+  /* --- ELEVASI & SHADOW (MATERIAL 3 INSPIRED) --- */
+  --shadow-xs: 0 1px 2px 0 rgba(15, 23, 42, 0.05);
+  --shadow-sm: 0 1px 3px 0 rgba(15, 23, 42, 0.1), 0 1px 2px -1px rgba(15, 23, 42, 0.1);
+  --shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.1), 0 2px 4px -2px rgba(15, 23, 42, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(15, 23, 42, 0.1), 0 4px 6px -4px rgba(15, 23, 42, 0.1);
+  --shadow-xl: 0 20px 25px -5px rgba(15, 23, 42, 0.1), 0 8px 10px -6px rgba(15, 23, 42, 0.1);
+  --shadow-bottom-sheet: 0 -8px 24px -4px rgba(15, 23, 42, 0.15);
+
+  /* --- MOTION / TRANSITIONS --- */
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 350ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* --- TARGET SENTUH MINIMUM --- */
+  --min-touch-target: 44px;
+
+  /* --- VIEWPORT & SAFE AREA --- */
+  --sat: env(safe-area-inset-top, 0px);
+  --sab: env(safe-area-inset-bottom, 0px);
+  --sal: env(safe-area-inset-left, 0px);
+  --sar: env(safe-area-inset-right, 0px);
+
+  /* Dimensi Layout Standar */
+  --sidebar-width: 260px;
+  --sidebar-collapsed-width: 68px;
+  --topbar-height: 64px;
+}
+
+/* --- TEMA GELAP (MANUAL VIA [data-theme="dark"] DAN MEDIA QUERY) --- */
+[data-theme="dark"],
+:root:has(#theme-dark:checked) {
+  --color-primary-base: var(--sky-500);
+  --color-primary-hover: var(--sky-400);
+  --color-primary-active: var(--sky-600);
+  --color-primary-surface: rgba(14, 165, 233, 0.15);
+  --color-primary-subtle: rgba(14, 165, 233, 0.25);
+  --color-primary-text: #ffffff;
+  --color-primary-border: var(--sky-700);
+
+  --color-bg-base: #0b1120;
+  --color-bg-surface: #131c31;
+  --color-bg-card: #18223c;
+  --color-bg-card-subtle: #1e293b;
+  --color-bg-alt: #1e293b;
+  --color-bg-overlay: rgba(2, 6, 23, 0.8);
+
+  --color-text-main: #f8fafc;
+  --color-text-muted: #94a3b8;
+  --color-text-subtle: #64748b;
+  --color-text-inverse: #0f172a;
+
+  --color-border-subtle: #1e293b;
+  --color-border-default: #334155;
+  --color-border-strong: #475569;
+
+  /* Status Colors in Dark */
+  --color-success-bg: rgba(22, 163, 74, 0.2);
+  --color-success-text: #86efac;
+  --color-success-border: #166534;
+
+  --color-warning-bg: rgba(217, 119, 6, 0.2);
+  --color-warning-text: #fde047;
+  --color-warning-border: #854d0e;
+
+  --color-danger-bg: rgba(225, 29, 72, 0.2);
+  --color-danger-text: #fca5a5;
+  --color-danger-border: #9f1239;
+
+  --color-info-bg: rgba(37, 99, 235, 0.2);
+  --color-info-text: #93c5fd;
+  --color-info-border: #1e40af;
+
+  --color-offline-bg: rgba(217, 119, 6, 0.25);
+  --color-offline-text: #fde047;
+  --color-offline-border: #d97706;
+
+  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+}

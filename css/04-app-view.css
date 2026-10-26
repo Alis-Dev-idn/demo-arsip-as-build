@@ -1,0 +1,267 @@
+/**
+ * ====================================================================
+ * ARSIP AS-BUILT DRAWING & OPNAME LAPANGAN (PDAM / BUMD)
+ * 04-app-view.css - Mobile Shell App View (Material 3 Style)
+ * ====================================================================
+ * - Desktop: Smartphone Frame Mockup (390px x 844px) terpusat
+ * - Mobile: 100dvh Layar Penuh dengan Safe-Area
+ * - Zero JavaScript, Tab Switching dengan Pure CSS Radio
+ * - Area Sentuh >= 44px, Bebas Sudut Lancip
+ * ====================================================================
+ */
+
+/* DESKTOP BACKGROUND BACKDROP */
+.phone-viewport-container {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at 50% 10%, #0f172a 0%, #020617 100%);
+  padding: var(--space-6) var(--space-4);
+  position: relative;
+}
+
+/* SMARTPHONE FRAME CONTAINER */
+.phone-frame {
+  width: 100%;
+  max-width: 412px;
+  height: 844px;
+  max-height: 94vh;
+  background-color: var(--color-bg-base);
+  border-radius: 44px;
+  border: 10px solid #1e293b;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6), 
+              0 0 0 1px rgba(255, 255, 255, 0.1),
+              inset 0 0 4px rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* DESKTOP FRAME NOTCH / SPEAKER */
+.phone-notch {
+  width: 120px;
+  height: 20px;
+  background-color: #1e293b;
+  border-radius: 0 0 14px 14px;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.phone-speaker {
+  width: 40px;
+  height: 4px;
+  background-color: #334155;
+  border-radius: var(--radius-full);
+}
+
+/* TOP STATUS BAR MOCK (BATTERY, WIFI, TIME) */
+.phone-status-bar {
+  height: 38px;
+  padding: 0 var(--space-6);
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  font-size: 11px;
+  font-weight: var(--font-bold);
+  color: var(--color-text-main);
+  z-index: 45;
+  background-color: var(--color-bg-surface);
+  user-select: none;
+}
+
+/* TOP APP BAR (HEADER FLUTTER / M3) */
+.app-topbar {
+  height: 56px;
+  padding: 0 var(--space-4);
+  background-color: var(--color-bg-surface);
+  border-bottom: 1px solid var(--color-border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 40;
+  box-shadow: var(--shadow-xs);
+}
+
+.app-topbar__title {
+  font-size: var(--font-base);
+  font-weight: var(--font-bold);
+  color: var(--color-text-main);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.app-topbar__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+/* APP SCROLL CONTENT BODY */
+.app-content {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: var(--space-4);
+  padding-bottom: 84px; /* Ruang untuk floating bottom nav */
+  background-color: var(--color-bg-base);
+  position: relative;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* MATERIAL 3 BOTTOM NAVIGATION BAR (5 TABS) */
+.app-bottom-nav {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 68px;
+  background-color: var(--color-bg-surface);
+  border-top: 1px solid var(--color-border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 0 var(--space-2);
+  z-index: 40;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.bottom-nav__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  flex: 1;
+  height: 52px;
+  min-height: var(--min-touch-target);
+  cursor: pointer;
+  color: var(--color-text-muted);
+  font-size: 10px;
+  font-weight: var(--font-medium);
+  transition: all var(--transition-fast);
+  border-radius: var(--radius-lg);
+  user-select: none;
+}
+
+.bottom-nav__item svg {
+  width: 22px;
+  height: 22px;
+  transition: transform var(--transition-fast);
+}
+
+.bottom-nav__item:active {
+  transform: scale(0.92);
+}
+
+/* CSS-ONLY TAB SWITCHING ENGINE VIA HIDDEN RADIOS */
+.app-tab-radio {
+  display: none;
+}
+
+.app-screen {
+  display: none;
+  animation: fadeIn 200ms ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Active Screen Switching */
+#app-tab-home:checked ~ .phone-frame .app-content #screen-home,
+#app-tab-tugas:checked ~ .phone-frame .app-content #screen-tugas,
+#app-tab-viewer:checked ~ .phone-frame .app-content #screen-viewer,
+#app-tab-approval:checked ~ .phone-frame .app-content #screen-approval,
+#app-tab-profil:checked ~ .phone-frame .app-content #screen-profil {
+  display: block;
+}
+
+/* Active Bottom Nav Item Highlight */
+#app-tab-home:checked ~ .phone-frame .app-bottom-nav label[for="app-tab-home"],
+#app-tab-tugas:checked ~ .phone-frame .app-bottom-nav label[for="app-tab-tugas"],
+#app-tab-viewer:checked ~ .phone-frame .app-bottom-nav label[for="app-tab-viewer"],
+#app-tab-approval:checked ~ .phone-frame .app-bottom-nav label[for="app-tab-approval"],
+#app-tab-profil:checked ~ .phone-frame .app-bottom-nav label[for="app-tab-profil"] {
+  color: var(--color-primary-base);
+  font-weight: var(--font-bold);
+}
+
+#app-tab-home:checked ~ .phone-frame .app-bottom-nav label[for="app-tab-home"] svg,
+#app-tab-tugas:checked ~ .phone-frame .app-bottom-nav label[for="app-tab-tugas"] svg,
+#app-tab-viewer:checked ~ .phone-frame .app-bottom-nav label[for="app-tab-viewer"] svg,
+#app-tab-approval:checked ~ .phone-frame .app-bottom-nav label[for="app-tab-approval"] svg,
+#app-tab-profil:checked ~ .phone-frame .app-bottom-nav label[for="app-tab-profil"] svg {
+  transform: translateY(-2px);
+  color: var(--color-primary-base);
+}
+
+/* GPS LOCK INDICATOR */
+.gps-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  background-color: var(--green-50);
+  border: 1px solid var(--green-100);
+  color: var(--green-700);
+  border-radius: var(--radius-full);
+  font-size: var(--font-xs);
+  font-weight: var(--font-semibold);
+  margin-bottom: var(--space-3);
+}
+
+.gps-pill__pulse {
+  width: 8px;
+  height: 8px;
+  background-color: var(--green-600);
+  border-radius: var(--radius-full);
+  box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.3);
+}
+
+/* REAL MOBILE DEVICE OVERRIDE (<= 767px): 100dvh & SAFE-AREA */
+@media (max-width: 767px) {
+  .phone-viewport-container {
+    padding: 0;
+    background: var(--color-bg-base);
+  }
+
+  .phone-frame {
+    max-width: 100%;
+    height: 100vh;
+    height: 100dvh;
+    max-height: 100dvh;
+    border-radius: 0;
+    border: none;
+    box-shadow: none;
+  }
+
+  .phone-notch {
+    display: none;
+  }
+
+  .phone-status-bar {
+    padding-top: max(8px, var(--sat));
+    height: calc(38px + max(0px, var(--sat)));
+  }
+
+  .app-bottom-nav {
+    padding-bottom: max(6px, var(--sab));
+    height: calc(68px + max(0px, var(--sab)));
+  }
+
+  .app-content {
+    padding-bottom: calc(88px + max(0px, var(--sab)));
+  }
+}

@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Master DMA & Log Audit - As-Built Drawing PDAM</title>
+  <link rel="stylesheet" href="css/00-tokens.css">
+  <link rel="stylesheet" href="css/01-reset.css">
+  <link rel="stylesheet" href="css/02-components.css">
+  <link rel="stylesheet" href="css/03-web-layout.css">
+</head>
+<body class="web-shell">
+
+  <!-- TOPBAR -->
+  <header class="web-topbar">
+    <div style="display: flex; align-items: center; gap: var(--space-3);">
+      <a href="#sidebar-drawer" class="web-topbar__menu-toggle" aria-label="Buka Menu Navigasi">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </a>
+      <a href="dashboard.html" class="web-topbar__brand">
+        <div class="web-topbar__logo">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+          </svg>
+        </div>
+        <div class="web-topbar__brand-text">
+          <span class="web-topbar__brand-title">PDAM Tirta Asri</span>
+          <span class="web-topbar__brand-sub">Arsip As-Built Drawing</span>
+        </div>
+      </a>
+    </div>
+
+    <div class="web-topbar__actions">
+      <div class="web-topbar__role-pill">
+        <span class="badge__dot" style="background-color: var(--color-success-base);"></span>
+        <span>Administrator GIS</span>
+      </div>
+      <a href="app/index.html" class="btn btn--outline btn--sm">App Lapangan</a>
+      <a href="index.html" class="btn btn--secondary btn--sm">Keluar</a>
+    </div>
+  </header>
+
+  <!-- SIDEBAR NAVIGASI -->
+  <aside class="web-sidebar" id="sidebar-drawer">
+    <div class="sidebar__section">
+      <span class="sidebar__heading">Menu Utama</span>
+      <a href="dashboard.html" class="sidebar__link">
+        <div class="sidebar__link-content">
+          <svg class="sidebar__link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="3" width="7" height="7"/>
+            <rect x="14" y="3" width="7" height="7"/>
+            <rect x="14" y="14" width="7" height="7"/>
+            <rect x="3" y="14" width="7" height="7"/>
+          </svg>
+          <span>Dashboard</span>
+        </div>
+      </a>
+
+      <a href="dokumen-list.html" class="sidebar__link">
+        <div class="sidebar__link-content">
+          <svg class="sidebar__link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+            <polyline points="14 2 14 8 20 8"/>
+          </svg>
+          <span>Katalog Dokumen</span>
+        </div>
+        <span class="badge badge--neutral">1,248</span>
+      </a>
+
+      <a href="opname-monitoring.html" class="sidebar__link">
+        <div class="sidebar__link-content">
+          <svg class="sidebar__link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="12" y1="8" x2="12" y2="12"/>
+            <line x1="12" y1="16" x2="12.01" y2="16"/>
+          </svg>
+          <span>Monitoring Opname</span>
+        </div>
+      </a>
+
+      <a href="approval-inbox.html" class="sidebar__link">
+        <div class="sidebar__link-content">
+          <svg class="sidebar__link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+            <polyline points="22 4 12 14.01 9 11.01"/>
+          </svg>
+          <span>Pusat Approval</span>
+        </div>
+        <span class="badge badge--warning">25</span>
+      </a>
+
+      <a href="admin-master.html" class="sidebar__link is-active">
+        <div class="sidebar__link-content">
+          <svg class="sidebar__link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 2v20M2 12h20"/>
+          </svg>
+          <span>Master DMA & Wilayah</span>
+        </div>
+      </a>
+    </div>
+
+    <div class="sidebar__footer">
+      <a href="app/index.html" class="btn btn--outline btn--full btn--sm">
+        <span>Mode Mobile Surveyor</span>
+      </a>
+    </div>
+  </aside>
+  <a href="#" class="mobile-drawer-overlay" aria-hidden="true"></a>
+
+  <!-- MAIN CONTENT -->
+  <main class="web-main">
+    <div class="web-container">
+      
+      <!-- BREADCRUMB & HEADER -->
+      <div>
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="dashboard.html" class="breadcrumb__link">Beranda</a>
+          <span class="breadcrumb__separator">/</span>
+          <span class="breadcrumb__current">Master DMA & Konfigurasi</span>
+        </nav>
+        <div class="page-header" style="margin-top: var(--space-2);">
+          <div>
+            <h1 class="page-header__title">Master Wilayah DMA & Audit Trail Sistem</h1>
+            <p class="page-header__desc">Manajemen taksonomi District Meter Area (DMA), perimeter hidrolis, dan rekaman audit integritas data.</p>
+          </div>
+          <div class="page-header__actions">
+            <a href="#modal-add-dma" class="btn btn--primary">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="12" y1="5" x2="12" y2="19"/>
+                <line x1="5" y1="12" x2="19" y2="12"/>
+              </svg>
+              <span>+ Tambah Wilayah DMA</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- MASTER DATA DMA TABLE -->
+      <section class="card">
+        <div class="card__header">
+          <h2 class="card__title">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/>
+              <line x1="8" y1="2" x2="8" y2="18"/>
+              <line x1="16" y1="6" x2="16" y2="22"/>
+            </svg>
+            <span>Daftar District Meter Area (DMA) Aktif</span>
+          </h2>
+          <span class="badge badge--success">Total: 4 Zona Operasional</span>
+        </div>
+
+        <div class="table-container">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Kode DMA</th>
+                <th>Nama Zona & Wilayah</th>
+                <th>Panjang Pipa Terdata</th>
+                <th>Total Sambungan Rumah</th>
+                <th>Tekanan Rata-Rata</th>
+                <th>Status Operasi</th>
+                <th>Aksi</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong style="font-family: var(--font-mono); color: var(--sky-700);">DMA-01</strong></td>
+                <td>
+                  <strong>Sukamaju Utara</strong><br>
+                  <span class="form-hint">Cabang Barat &bull; Sumber: IPA Cisadane</span>
+                </td>
+                <td>18,420 meter</td>
+                <td>1,840 SR</td>
+                <td>2.4 Bar</td>
+                <td><span class="badge badge--success">Aktif Normal</span></td>
+                <td>
+                  <a href="#modal-add-dma" class="btn btn--outline btn--sm">Edit</a>
+                </td>
+              </tr>
+              <tr>
+                <td><strong style="font-family: var(--font-mono); color: var(--sky-700);">DMA-02</strong></td>
+                <td>
+                  <strong>Sukamaju Selatan</strong><br>
+                  <span class="form-hint">Cabang Barat &bull; Reservoir Cempaka</span>
+                </td>
+                <td>24,150 meter</td>
+                <td>2,950 SR</td>
+                <td>2.1 Bar</td>
+                <td><span class="badge badge--success">Aktif Normal</span></td>
+                <td>
+                  <a href="#modal-add-dma" class="btn btn--outline btn--sm">Edit</a>
+                </td>
+              </tr>
+              <tr>
+                <td><strong style="font-family: var(--font-mono); color: var(--sky-700);">DMA-03</strong></td>
+                <td>
+                  <strong>Pusat Kota Lama</strong><br>
+                  <span class="form-hint">Cabang Kota &bull; Pipa Primer Cast Iron</span>
+                </td>
+                <td>12,800 meter</td>
+                <td>980 SR</td>
+                <td>1.8 Bar</td>
+                <td><span class="badge badge--warning">Peremajaan Pipa</span></td>
+                <td>
+                  <a href="#modal-add-dma" class="btn btn--outline btn--sm">Edit</a>
+                </td>
+              </tr>
+              <tr>
+                <td><strong style="font-family: var(--font-mono); color: var(--sky-700);">DMA-04</strong></td>
+                <td>
+                  <strong>Distribusi Utama Timur</strong><br>
+                  <span class="form-hint">Cabang Timur &bull; Pipa HDPE Utama 150mm</span>
+                </td>
+                <td>32,600 meter</td>
+                <td>4,200 SR</td>
+                <td>2.8 Bar</td>
+                <td><span class="badge badge--success">Aktif Normal</span></td>
+                <td>
+                  <a href="#modal-add-dma" class="btn btn--outline btn--sm">Edit</a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- LOG AUDIT AKTIVITAS SISTEM -->
+      <section class="card">
+        <div class="card__header">
+          <h2 class="card__title">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+              <line x1="16" y1="13" x2="8" y2="13"/>
+              <line x1="16" y1="17" x2="8" y2="17"/>
+              <polyline points="10 9 9 9 8 9"/>
+            </svg>
+            <span>Log Audit Aktivitas Sistem & Integritas Dokumen</span>
+          </h2>
+          <span class="badge badge--neutral">Audit Real-time (Immutable)</span>
+        </div>
+
+        <div class="table-container">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Waktu & Tanggal</th>
+                <th>Pengguna / NIP</th>
+                <th>Peran</th>
+                <th>Aktivitas Dilakukan</th>
+                <th>Target Dokumen</th>
+                <th>Alamat IP / Klien</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="font-family: var(--font-mono); font-size: var(--font-xs);">26 Okt 2026 11:32:04</td>
+                <td><strong>Haryanto (19880415)</strong></td>
+                <td><span class="badge badge--info">Surveyor Lapangan</span></td>
+                <td>Unggah Lembar Opname & 4 Foto Geotag</td>
+                <td>SPK-2026-DMA04-019</td>
+                <td>10.14.88.22 (Mobile PWA)</td>
+              </tr>
+              <tr>
+                <td style="font-family: var(--font-mono); font-size: var(--font-xs);">25 Okt 2026 16:45:12</td>
+                <td><strong>Bambang S. (19820512)</strong></td>
+                <td><span class="badge badge--warning">Pengawas L1</span></td>
+                <td>Verifikasi Fisik Lapangan (Disetujui ke L2)</td>
+                <td>SPK-2026-DMA04-019</td>
+                <td>192.168.1.45 (Desktop Chrome)</td>
+              </tr>
+              <tr>
+                <td style="font-family: var(--font-mono); font-size: var(--font-xs);">24 Okt 2026 09:15:30</td>
+                <td><strong>Ahmad Fauzi (19790102)</strong></td>
+                <td><span class="badge badge--success">Manajer Teknik L3</span></td>
+                <td>Pengesahan SK Berita Acara As-Built</td>
+                <td>SPK-2026-DMA04-007</td>
+                <td>192.168.1.10 (Desktop Kantor Pusat)</td>
+              </tr>
+              <tr>
+                <td style="font-family: var(--font-mono); font-size: var(--font-xs);">23 Okt 2026 14:02:18</td>
+                <td><strong>Admin GIS (19901128)</strong></td>
+                <td><span class="badge badge--neutral">Administrator</span></td>
+                <td>Pembaruan Garis Batas Poligon DMA 04</td>
+                <td>DMA Master Data</td>
+                <td>192.168.1.18 (QGIS Bridge)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- MODAL TAMBAH / EDIT DMA (:target) -->
+  <div class="modal" id="modal-add-dma" role="dialog" aria-modal="true" aria-labelledby="modal-dma-title">
+    <a href="#" class="modal__backdrop" aria-label="Tutup Dialog"></a>
+    <div class="modal__dialog">
+      <div class="modal__header">
+        <h2 class="modal__title" id="modal-dma-title">Konfigurasi Master Zona DMA</h2>
+        <a href="#" class="modal__close" aria-label="Tutup">&times;</a>
+      </div>
+      <form action="admin-master.html" method="get">
+        <div class="modal__body">
+          <div class="grid-2col" style="gap: var(--space-4);">
+            <div class="form-group">
+              <label for="kode-dma" class="form-label">Kode DMA <span class="required">*</span></label>
+              <input type="text" id="kode-dma" class="form-control" placeholder="Misal: DMA-05" required>
+            </div>
+            <div class="form-group">
+              <label for="nama-dma" class="form-label">Nama Zona Pelayanan <span class="required">*</span></label>
+              <input type="text" id="nama-dma" class="form-control" placeholder="Misal: Sukamaju Tenggara" required>
+            </div>
+          </div>
+
+          <div class="grid-2col" style="gap: var(--space-4);">
+            <div class="form-group">
+              <label for="cabang-wilayah" class="form-label">Cabang Pelayanan</label>
+              <select id="cabang-wilayah" class="form-select">
+                <option value="timur">Cabang Wilayah Timur</option>
+                <option value="barat">Cabang Wilayah Barat</option>
+                <option value="kota">Cabang Kota Pusat</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="tekanan-target" class="form-label">Target Tekanan Hidrolis (Bar)</label>
+              <input type="number" step="0.1" id="tekanan-target" class="form-control" placeholder="2.5">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="sumber-air" class="form-label">Sumber Air / Reservoir Pasokan</label>
+            <input type="text" id="sumber-air" class="form-control" placeholder="IPA Sukamaju / Pompa Booster 02">
+          </div>
+        </div>
+
+        <div class="modal__footer">
+          <a href="#" class="btn btn--outline">Batal</a>
+          <button type="submit" class="btn btn--primary">Simpan Master Data DMA</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+</body>
+</html>

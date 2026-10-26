@@ -1,0 +1,14 @@
+# Operating System
+.DS_Store
+Thumbs.db
+
+# IDEs
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Temporary / Agent logs
+*.log
+scratch/
+tmp/

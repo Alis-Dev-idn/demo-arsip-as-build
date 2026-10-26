@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard Eksekutif & Monitoring - As-Built Drawing PDAM</title>
+  <link rel="stylesheet" href="css/00-tokens.css">
+  <link rel="stylesheet" href="css/01-reset.css">
+  <link rel="stylesheet" href="css/02-components.css">
+  <link rel="stylesheet" href="css/03-web-layout.css">
+</head>
+<body class="web-shell">
+
+  <!-- TOPBAR -->
+  <header class="web-topbar">
+    <div style="display: flex; align-items: center; gap: var(--space-3);">
+      <a href="#sidebar-drawer" class="web-topbar__menu-toggle" aria-label="Buka Menu Navigasi">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </a>
+      <a href="dashboard.html" class="web-topbar__brand">
+        <div class="web-topbar__logo">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+          </svg>
+        </div>
+        <div class="web-topbar__brand-text">
+          <span class="web-topbar__brand-title">PDAM Tirta Asri</span>
+          <span class="web-topbar__brand-sub">Arsip As-Built Drawing</span>
+        </div>
+      </a>
+    </div>
+
+    <div class="web-topbar__actions">
+      <div class="web-topbar__role-pill">
+        <span class="badge__dot" style="background-color: var(--color-success-base);"></span>
+        <span>Kasi Perencanaan (L2)</span>
+      </div>
+      <a href="app/index.html" class="btn btn--outline btn--sm" title="Buka Mode Petugas Lapangan">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
+          <line x1="12" y1="18" x2="12.01" y2="18"/>
+        </svg>
+        <span>App Lapangan</span>
+      </a>
+      <a href="index.html" class="btn btn--secondary btn--sm" title="Keluar">Keluar</a>
+    </div>
+  </header>
+
+  <!-- SIDEBAR NAVIGASI -->
+  <aside class="web-sidebar" id="sidebar-drawer">
+    <div style="display: flex; flex-direction: column; gap: var(--space-4);">
+      <div style="display: flex; align-items: center; justify-content: space-between; padding: 0 var(--space-4); display: none;" class="mobile-only">
+        <span style="font-weight: var(--font-bold); font-size: var(--font-base);">Navigasi Utama</span>
+        <a href="#" class="modal__close" aria-label="Tutup Menu">&times;</a>
+      </div>
+
+      <div class="sidebar__section">
+        <span class="sidebar__heading">Menu Utama</span>
+        <a href="dashboard.html" class="sidebar__link is-active">
+          <div class="sidebar__link-content">
+            <svg class="sidebar__link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="3" width="7" height="7"/>
+              <rect x="14" y="3" width="7" height="7"/>
+              <rect x="14" y="14" width="7" height="7"/>
+              <rect x="3" y="14" width="7" height="7"/>
+            </svg>
+            <span>Dashboard</span>
+          </div>
+        </a>
+
+        <a href="dokumen-list.html" class="sidebar__link">
+          <div class="sidebar__link-content">
+            <svg class="sidebar__link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+            </svg>
+            <span>Katalog Dokumen</span>
+          </div>
+          <span class="badge badge--neutral">1,248</span>
+        </a>
+
+        <a href="opname-monitoring.html" class="sidebar__link">
+          <div class="sidebar__link-content">
+            <svg class="sidebar__link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/>
+              <line x1="12" y1="8" x2="12" y2="12"/>
+              <line x1="12" y1="16" x2="12.01" y2="16"/>
+            </svg>
+            <span>Monitoring Opname</span>
+          </div>
+        </a>
+
+        <a href="approval-inbox.html" class="sidebar__link">
+          <div class="sidebar__link-content">
+            <svg class="sidebar__link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+              <polyline points="22 4 12 14.01 9 11.01"/>
+            </svg>
+            <span>Pusat Approval</span>
+          </div>
+          <span class="badge badge--warning">25</span>
+        </a>
+
+        <a href="admin-master.html" class="sidebar__link">
+          <div class="sidebar__link-content">
+            <svg class="sidebar__link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2v20M2 12h20"/>
+            </svg>
+            <span>Master DMA & Wilayah</span>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div class="sidebar__footer">
+      <a href="app/index.html" class="btn btn--outline btn--full btn--sm" style="gap: var(--space-2);">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
+          <line x1="12" y1="18" x2="12.01" y2="18"/>
+        </svg>
+        <span>Mode Mobile Surveyor</span>
+      </a>
+    </div>
+  </aside>
+  <a href="#" class="mobile-drawer-overlay" aria-hidden="true"></a>
+
+  <!-- MAIN CONTENT -->
+  <main class="web-main">
+    <div class="web-container">
+      
+      <!-- BREADCRUMB & HEADER -->
+      <div>
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="dashboard.html" class="breadcrumb__link">Beranda</a>
+          <span class="breadcrumb__separator">/</span>
+          <span class="breadcrumb__current">Dashboard Monitoring Eksekutif</span>
+        </nav>
+        <div class="page-header" style="margin-top: var(--space-2);">
+          <div>
+            <h1 class="page-header__title">Monitoring Dokumen & Deviasi Jaringan Pipa</h1>
+            <p class="page-header__desc">Kompilasi berkas As-Built Drawing, validasi opname fisik, dan antrean verifikasi teknis PDAM.</p>
+          </div>
+          <div class="page-header__actions">
+            <a href="approval-inbox.html" class="btn btn--primary">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="9 11 12 14 22 4"/>
+                <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+              </svg>
+              <span>Review Antrean (25)</span>
+            </a>
+            <a href="dokumen-list.html#modal-upload" class="btn btn--outline">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="12" y1="5" x2="12" y2="19"/>
+                <line x1="5" y1="12" x2="19" y2="12"/>
+              </svg>
+              <span>Unggah As-Built</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- METRIC CARDS GRID -->
+      <section class="grid-stats" aria-label="Statistik Dokumen">
+        <div class="stat-card">
+          <div class="stat-card__top">
+            <span class="stat-card__label">Total Berkas As-Built</span>
+            <div class="stat-card__icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              </svg>
+            </div>
+          </div>
+          <div class="stat-card__value">1,248</div>
+          <div class="stat-card__delta" style="color: var(--color-success-text);">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="18 15 12 9 6 15"/>
+            </svg>
+            <span>+18 dokumen minggu ini</span>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-card__top">
+            <span class="stat-card__label">Menunggu Review L1</span>
+            <div class="stat-card__icon stat-card__icon--warning">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/>
+                <polyline points="12 6 12 12 16 14"/>
+              </svg>
+            </div>
+          </div>
+          <div class="stat-card__value">14</div>
+          <div class="stat-card__delta" style="color: var(--color-warning-text);">
+            <span>Verifikasi Pengawas Lapangan</span>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-card__top">
+            <span class="stat-card__label">Menunggu Review L2 (Anda)</span>
+            <div class="stat-card__icon" style="background-color: var(--sky-100); color: var(--sky-700);">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                <circle cx="8.5" cy="7" r="4"/>
+              </svg>
+            </div>
+          </div>
+          <div class="stat-card__value">8</div>
+          <div class="stat-card__delta" style="color: var(--sky-700); font-weight: var(--font-semibold);">
+            <span>Validasi Kalkulasi & Deviasi</span>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-card__top">
+            <span class="stat-card__label">Menunggu L3 (SK Direksi)</span>
+            <div class="stat-card__icon stat-card__icon--success">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+              </svg>
+            </div>
+          </div>
+          <div class="stat-card__value">3</div>
+          <div class="stat-card__delta" style="color: var(--color-success-text);">
+            <span>Siap Pengesahan Akhir</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- CHARTS SECTION (CSS-ONLY DONUT & PROGRESS BARS) -->
+      <section class="grid-2col" aria-label="Analisis Grafis">
+        
+        <!-- DONUT CHART STATUS -->
+        <div class="card">
+          <div class="card__header">
+            <h2 class="card__title">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M12 2a10 10 0 0 1 10 10h-10z"/>
+              </svg>
+              <span>Komposisi Status Dokumen</span>
+            </h2>
+            <span class="badge badge--info">Bulan Oktober 2026</span>
+          </div>
+          <div class="card__body" style="display: flex; flex-direction: column; gap: var(--space-5); align-items: center;">
+            <div class="css-donut-chart">
+              <div class="css-donut-chart__label">
+                <div>88%</div>
+                <div style="font-size: var(--font-xs); font-weight: normal; color: var(--color-text-muted);">Selesai</div>
+              </div>
+            </div>
+            
+            <div style="display: flex; justify-content: space-around; width: 100%; border-top: 1px solid var(--color-border-subtle); padding-top: var(--space-4);">
+              <div style="display: flex; align-items: center; gap: var(--space-2);">
+                <span class="badge__dot" style="background-color: var(--color-success-base); width: 10px; height: 10px;"></span>
+                <span style="font-size: var(--font-xs);">Disetujui (70%)</span>
+              </div>
+              <div style="display: flex; align-items: center; gap: var(--space-2);">
+                <span class="badge__dot" style="background-color: var(--color-warning-base); width: 10px; height: 10px;"></span>
+                <span style="font-size: var(--font-xs);">Review L1-L3 (18%)</span>
+              </div>
+              <div style="display: flex; align-items: center; gap: var(--space-2);">
+                <span class="badge__dot" style="background-color: var(--color-danger-base); width: 10px; height: 10px;"></span>
+                <span style="font-size: var(--font-xs);">Revisi/Deviasi (12%)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CSS BAR CHART: DEVIASI DED VS LAPANGAN -->
+        <div class="card">
+          <div class="card__header">
+            <h2 class="card__title">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="18" y1="20" x2="18" y2="10"/>
+                <line x1="12" y1="20" x2="12" y2="4"/>
+                <line x1="6" y1="20" x2="6" y2="14"/>
+              </svg>
+              <span>Tingkat Kesesuaian Desain vs Fisik Lapangan</span>
+            </h2>
+            <a href="opname-monitoring.html" class="btn btn--outline btn--sm">Detail Opname</a>
+          </div>
+          <div class="card__body css-bar-group">
+            <div class="css-bar-item">
+              <div class="css-bar-header">
+                <span>Pipa Distribusi HDPE 150mm (DMA 04)</span>
+                <span style="font-weight: bold; color: var(--color-success-text);">98.2% Sesuai</span>
+              </div>
+              <div class="css-bar-track">
+                <div class="css-bar-fill css-bar-fill--success" style="width: 98.2%;"></div>
+              </div>
+            </div>
+
+            <div class="css-bar-item">
+              <div class="css-bar-header">
+                <span>Pemasangan Gate Valve 100mm (DMA 02)</span>
+                <span style="font-weight: bold; color: var(--color-primary-base);">92.5% Sesuai</span>
+              </div>
+              <div class="css-bar-track">
+                <div class="css-bar-fill css-bar-fill--primary" style="width: 92.5%;"></div>
+              </div>
+            </div>
+
+            <div class="css-bar-item">
+              <div class="css-bar-header">
+                <span>Kedalaman Galian Pipa Sekunder (1.2m vs 1.1m)</span>
+                <span style="font-weight: bold; color: var(--color-warning-text);">85.0% (Toleransi Wajar)</span>
+              </div>
+              <div class="css-bar-track">
+                <div class="css-bar-fill css-bar-fill--warning" style="width: 85%;"></div>
+              </div>
+            </div>
+
+            <div class="css-bar-item">
+              <div class="css-bar-header">
+                <span>Koneksi Tee Reducer DMA 01 (Pergeseran Jalur Galian)</span>
+                <span style="font-weight: bold; color: var(--color-danger-text);">72.4% (Perlu Approval Khusus)</span>
+              </div>
+              <div class="css-bar-track">
+                <div class="css-bar-fill css-bar-fill--danger" style="width: 72.4%;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- ANTREAN TINDAKAN MENDESAK -->
+      <section class="card" aria-label="Antrean Verifikasi">
+        <div class="card__header">
+          <div>
+            <h2 class="card__title">Antrean Dokumen Butuh Putusan Reviewer</h2>
+            <p class="form-hint" style="margin-top: 4px;">Daftar berkas dengan tanggal jatuh tempo terdekat yang menunggu aksi Anda.</p>
+          </div>
+          <a href="approval-inbox.html" class="btn btn--outline btn--sm">Lihat Semua Antrean (25)</a>
+        </div>
+        
+        <div class="table-container">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>No SPK / Kode</th>
+                <th>Nama Pekerjaan Jaringan</th>
+                <th>Zona DMA</th>
+                <th>Hasil Opname Lapangan</th>
+                <th>Tahap Saat Ini</th>
+                <th>Aksi</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="font-family: var(--font-mono); font-weight: bold; color: var(--sky-700);">
+                  SPK-2026-DMA04-019
+                </td>
+                <td>
+                  <strong>Pemasangan Pipa HDPE 150mm Jalur Utama</strong><br>
+                  <span class="form-hint">Kontraktor: PT Tirta Mandiri Konstruksi</span>
+                </td>
+                <td><span class="badge badge--neutral">DMA 04 (Timur)</span></td>
+                <td>
+                  <span class="badge badge--success">Panjang 1,240m (Deviasi +2m)</span>
+                </td>
+                <td>
+                  <span class="badge badge--warning">Menunggu Review L2</span>
+                </td>
+                <td>
+                  <a href="dokumen-detail.html" class="btn btn--primary btn--sm">Evaluasi Berkas</a>
+                </td>
+              </tr>
+              <tr>
+                <td style="font-family: var(--font-mono); font-weight: bold; color: var(--sky-700);">
+                  SPK-2026-DMA02-088
+                </td>
+                <td>
+                  <strong>Interkoneksi Pipa Transmisi Steel 200mm</strong><br>
+                  <span class="form-hint">Tim Swakelola Wilayah Barat</span>
+                </td>
+                <td><span class="badge badge--neutral">DMA 02 (Selatan)</span></td>
+                <td>
+                  <span class="badge badge--warning">Kedalaman 1.4m (DED 1.2m)</span>
+                </td>
+                <td>
+                  <span class="badge badge--warning">Menunggu Review L2</span>
+                </td>
+                <td>
+                  <a href="dokumen-detail.html" class="btn btn--primary btn--sm">Evaluasi Berkas</a>
+                </td>
+              </tr>
+              <tr>
+                <td style="font-family: var(--font-mono); font-weight: bold; color: var(--sky-700);">
+                  SPK-2026-DMA01-042
+                </td>
+                <td>
+                  <strong>Penggantian Pipa Distribusi PVC ke HDPE 90mm</strong><br>
+                  <span class="form-hint">PT Adhi Graha Tirta</span>
+                </td>
+                <td><span class="badge badge--neutral">DMA 01 (Utara)</span></td>
+                <td>
+                  <span class="badge badge--danger">Deviasi Jalur 4.5m</span>
+                </td>
+                <td>
+                  <span class="badge badge--danger">Revisi Lapangan L1</span>
+                </td>
+                <td>
+                  <a href="opname-monitoring.html" class="btn btn--outline btn--sm">Cek Deviasi</a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+</body>
+</html>
