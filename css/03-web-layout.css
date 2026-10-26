@@ -415,10 +415,26 @@
 @media (max-width: 480px) {
   .web-topbar {
     gap: var(--space-2);
+    padding: 0 var(--space-3);
   }
 
   .web-topbar__brand-text {
     display: none;
+  }
+
+  .web-topbar__actions {
+    gap: var(--space-2);
+  }
+
+  /* Sembunyikan tombol sekunder topbar di mobile (tersedia di drawer & role switcher) */
+  .web-topbar__actions > .btn,
+  .web-topbar__btn-action {
+    display: none !important;
+  }
+
+  .role-switcher summary {
+    padding: 0 var(--space-2);
+    font-size: 11px;
   }
 
   .role-switcher summary span:not(.badge__dot) {
@@ -429,7 +445,8 @@
   }
 
   .role-switcher__menu {
-    right: -40px;
+    right: 0;
+    max-width: calc(100vw - 32px);
     min-width: 260px;
   }
 }
