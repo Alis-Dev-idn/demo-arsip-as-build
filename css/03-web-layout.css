@@ -1,6 +1,6 @@
 /**
  * ====================================================================
- * ARSIP AS-BUILT DRAWING & OPNAME LAPANGAN (PDAM / BUMD)
+ * ARSIP AS-BUILT DRAWING & OPNAME LAPANGAN (PROTOTIPE APP)
  * 03-web-layout.css - Web Layout & Responsive Grid
  * ====================================================================
  * Layout Desktop (1280px+), Tablet (768px-1024px), Mobile (<768px)
@@ -124,7 +124,7 @@
 .sidebar__heading {
   font-size: var(--font-xs);
   font-weight: var(--font-bold);
-  color: var(--color-text-subtle);
+  color: var(--slate-600);
   text-transform: uppercase;
   letter-spacing: 0.05em;
   padding: var(--space-2) var(--space-3);

@@ -1,6 +1,6 @@
 /**
  * ====================================================================
- * ARSIP AS-BUILT DRAWING & OPNAME LAPANGAN (PDAM / BUMD)
+ * ARSIP AS-BUILT DRAWING & OPNAME LAPANGAN (PROTOTIPE APP)
  * 02-components.css - Reusable UI Components (Atomic Design)
  * ====================================================================
  * Mematuhi: .agent/rules/03-desain-ui.md
@@ -101,8 +101,8 @@
 }
 
 .btn--sm {
-  min-height: 38px;
-  padding: 0 var(--space-3);
+  min-height: var(--min-touch-target);
+  padding: 0 var(--space-4);
   font-size: var(--font-xs);
   border-radius: var(--radius-sm);
 }
@@ -220,7 +220,7 @@
   display: inline-flex;
   align-items: center;
   gap: var(--space-2);
-  min-height: 38px;
+  min-height: var(--min-touch-target);
   padding: 0 var(--space-4);
   font-size: var(--font-sm);
   font-weight: var(--font-medium);
@@ -242,8 +242,8 @@
 .chip.is-active {
   border-color: var(--color-primary-base);
   background-color: var(--color-primary-surface);
-  color: var(--color-primary-base);
-  font-weight: var(--font-semibold);
+  color: var(--sky-800);
+  font-weight: var(--font-bold);
 }
 
 /* ====================================================================
@@ -608,8 +608,10 @@ textarea.form-control {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 36px;
-  height: 36px;
+  width: var(--min-touch-target);
+  height: var(--min-touch-target);
+  min-width: var(--min-touch-target);
+  min-height: var(--min-touch-target);
   border-radius: var(--radius-full);
   color: var(--color-text-muted);
   font-size: var(--font-xl);

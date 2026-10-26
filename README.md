@@ -1,4 +1,4 @@
-# Sistem Web Arsip As-Built Drawing & Opname Lapangan (PDAM / BUMD)
+# Sistem Web Arsip As-Built Drawing & Opname Lapangan (Prototipe App)
 
 Prototipe antarmuka sistem pengelolaan berkas gambar teknik *As-Built Drawing* dan lembar hasil *opname* survei lapangan instalasi pipa air minum berbasis **Pure HTML5 + CSS3** (Zero JavaScript, Bebas Framework, Zero Dependencies).
 
@@ -15,7 +15,7 @@ Dibangun dengan arsitektur **Atomic Design**, mematuhi standar kontras warna **W
 4. **Viewer Gambar As-Built & Split Metadata (`dokumen-detail.html`)**:
    - Kanvas gambar teknik SVG interaktif (simulasi CAD 65% lebar layar) lengkap dengan jalur pipa HDPE, gate valve, meter induk DMA, penanda deviasi, dan stempel stempel verifikasi L1.
    - Panel metadata 35% lebar layar memuat spesifikasi pipa, riwayat versi revisi berkas, serta modal aksi putusan reviewer (Setujui, Minta Revisi, Tolak).
-5. **Monitoring Opname Lapangan (`opname-monitoring.html`)**: Matriks perbandingan DED (Desain) vs Terpasang Fisik, toleransi SNI/PDAM, dan galeri dokumentasi foto geotagged GPS.
+5. **Monitoring Opname Lapangan (`opname-monitoring.html`)**: Matriks perbandingan DED (Desain) vs Terpasang Fisik, toleransi SNI/Prototipe App, dan galeri dokumentasi foto geotagged GPS.
 6. **Pusat Persetujuan Berjenjang 3-Level (`approval-inbox.html`)**:
    - Level 1: Pengawas Lapangan (Verifikasi fisik & foto).
    - Level 2: Kasi Perencanaan & Pengawasan (Verifikasi kalkulasi teknis & deviasi DED).

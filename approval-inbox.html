@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pusat Approval Berjenjang (3-Level) - PDAM Tirta Asri</title>
+  <title>Pusat Approval Berjenjang (3-Level) - Prototipe App</title>
   <link rel="stylesheet" href="css/00-tokens.css">
   <link rel="stylesheet" href="css/01-reset.css">
   <link rel="stylesheet" href="css/02-components.css">
@@ -41,17 +41,17 @@
     .tab-content {
       display: none;
     }
-    #tab-radio-l1:checked ~ .web-container .tab-nav label[for="tab-radio-l1"],
-    #tab-radio-l2:checked ~ .web-container .tab-nav label[for="tab-radio-l2"],
-    #tab-radio-l3:checked ~ .web-container .tab-nav label[for="tab-radio-l3"] {
+    #tab-radio-l1:checked ~ .web-main .tab-nav label[for="tab-radio-l1"],
+    #tab-radio-l2:checked ~ .web-main .tab-nav label[for="tab-radio-l2"],
+    #tab-radio-l3:checked ~ .web-main .tab-nav label[for="tab-radio-l3"] {
       color: var(--color-primary-base);
       border-bottom-color: var(--color-primary-base);
       background-color: var(--color-primary-surface);
       border-radius: var(--radius-md) var(--radius-md) 0 0;
     }
-    #tab-radio-l1:checked ~ .web-container #content-l1,
-    #tab-radio-l2:checked ~ .web-container #content-l2,
-    #tab-radio-l3:checked ~ .web-container #content-l3 {
+    #tab-radio-l1:checked ~ .web-main #content-l1,
+    #tab-radio-l2:checked ~ .web-main #content-l2,
+    #tab-radio-l3:checked ~ .web-main #content-l3 {
       display: block;
     }
   </style>
@@ -78,7 +78,7 @@
           </svg>
         </div>
         <div class="web-topbar__brand-text">
-          <span class="web-topbar__brand-title">PDAM Tirta Asri</span>
+          <span class="web-topbar__brand-title">Prototipe App</span>
           <span class="web-topbar__brand-sub">Arsip As-Built Drawing</span>
         </div>
       </a>
@@ -390,7 +390,7 @@
               <input type="radio" name="keputusan" value="approve" checked style="margin-top: 4px;">
               <div>
                 <strong style="color: var(--green-800);">Setujui & Teruskan ke L3 (Manajer Teknik)</strong>
-                <p class="form-hint" style="font-size: 0.75rem; margin-top: 2px;">Seluruh parameter teknis terverifikasi dan memenuhi toleransi aman PDAM.</p>
+                <p class="form-hint" style="font-size: 0.75rem; margin-top: 2px;">Seluruh parameter teknis terverifikasi dan memenuhi toleransi aman Prototipe App.</p>
               </div>
             </label>
 
@@ -406,7 +406,7 @@
               <input type="radio" name="keputusan" value="reject" style="margin-top: 4px;">
               <div>
                 <strong style="color: var(--rose-800);">Tolak Berkas Secara Total</strong>
-                <p class="form-hint" style="font-size: 0.75rem; margin-top: 2px;">Melanggar spesifikasi teknik dasar PDAM dan wajib redesain/survei ulang.</p>
+                <p class="form-hint" style="font-size: 0.75rem; margin-top: 2px;">Melanggar spesifikasi teknik dasar Prototipe App dan wajib redesain/survei ulang.</p>
               </div>
             </label>
           </div>

@@ -1,6 +1,6 @@
 /**
  * ====================================================================
- * ARSIP AS-BUILT DRAWING & OPNAME LAPANGAN (PDAM / BUMD)
+ * ARSIP AS-BUILT DRAWING & OPNAME LAPANGAN (PROTOTIPE APP)
  * 00-tokens.css - Design Tokens & Global CSS Variables
  * ====================================================================
  * Mematuhi: .agent/rules/03-desain-ui.md & WCAG 2.1 AA
@@ -17,7 +17,7 @@
   --sky-300: #7dd3fc;
   --sky-400: #38bdf8;
   --sky-500: #0ea5e9;
-  --sky-600: #0284c7; /* Primary Brand PDAM */
+  --sky-600: #0284c7; /* Primary Brand Prototipe App */
   --sky-700: #0369a1; /* Primary Hover / High Contrast */
   --sky-800: #075985;
   --sky-900: #0c4a6e;
