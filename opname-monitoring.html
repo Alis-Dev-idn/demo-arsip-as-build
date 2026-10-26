@@ -33,10 +33,63 @@
     </div>
 
     <div class="web-topbar__actions">
-      <div class="web-topbar__role-pill">
-        <span class="badge__dot" style="background-color: var(--color-success-base);"></span>
-        <span>Kasi Perencanaan (L2)</span>
-      </div>
+      <!-- ROLE SWITCHER POPOVER COMPONENT -->
+      <details class="role-switcher">
+        <summary aria-haspopup="true">
+          <span class="badge__dot" style="background-color: var(--amber-600); width: 8px; height: 8px;"></span>
+          <span>Peran: Kasi Perencanaan (L2)</span>
+          <svg class="role-switcher__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6 9 12 15 18 9"/>
+          </svg>
+        </summary>
+        <div class="role-switcher__menu" role="menu">
+          <div style="padding: var(--space-2) var(--space-3); border-bottom: 1px solid var(--color-border-subtle); font-size: 11px; font-weight: bold; color: var(--color-text-muted);">
+            PILIH PERSONA AKSES (SIMULASI)
+          </div>
+
+          <a href="approval-inbox.html#content-l1" class="role-switcher__item" role="menuitem">
+            <span class="badge__dot" style="background-color: var(--sky-500); width: 10px; height: 10px;"></span>
+            <div style="display: flex; flex-direction: column;">
+              <strong style="font-size: var(--font-xs); color: var(--color-text-main);">Pengawas Lapangan (L1)</strong>
+              <span class="form-hint" style="font-size: 10px;">Verifikasi fisik & foto lapangan</span>
+            </div>
+          </a>
+
+          <a href="approval-inbox.html#content-l2" class="role-switcher__item is-active" role="menuitem">
+            <span class="badge__dot" style="background-color: var(--amber-600); width: 10px; height: 10px;"></span>
+            <div style="display: flex; flex-direction: column;">
+              <strong style="font-size: var(--font-xs); color: var(--amber-800);">Kasi Perencanaan (L2) &bull; Aktif</strong>
+              <span class="form-hint" style="font-size: 10px;">Validasi teknis & deviasi DED</span>
+            </div>
+          </a>
+
+          <a href="approval-inbox.html#content-l3" class="role-switcher__item" role="menuitem">
+            <span class="badge__dot" style="background-color: var(--green-600); width: 10px; height: 10px;"></span>
+            <div style="display: flex; flex-direction: column;">
+              <strong style="font-size: var(--font-xs); color: var(--color-text-main);">Manajer Teknik (L3)</strong>
+              <span class="form-hint" style="font-size: 10px;">Pengesahan formal SK & BAST</span>
+            </div>
+          </a>
+
+          <a href="admin-master.html" class="role-switcher__item" role="menuitem">
+            <span class="badge__dot" style="background-color: var(--slate-600); width: 10px; height: 10px;"></span>
+            <div style="display: flex; flex-direction: column;">
+              <strong style="font-size: var(--font-xs); color: var(--color-text-main);">Administrator GIS</strong>
+              <span class="form-hint" style="font-size: 10px;">Master data DMA & log audit</span>
+            </div>
+          </a>
+
+          <div style="border-top: 1px solid var(--color-border-subtle); margin-top: var(--space-1); padding-top: var(--space-1);">
+            <a href="app/index.html" class="role-switcher__item" role="menuitem" style="color: var(--sky-700);">
+              <span style="font-size: 14px;">📱</span>
+              <div style="display: flex; flex-direction: column;">
+                <strong style="font-size: var(--font-xs);">Mode Surveyor Lapangan</strong>
+                <span class="form-hint" style="font-size: 10px;">Buka aplikasi mobile (PWA)</span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </details>
       <a href="app/index.html" class="btn btn--outline btn--sm">App Lapangan</a>
       <a href="index.html" class="btn btn--secondary btn--sm">Keluar</a>
     </div>

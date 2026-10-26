@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="css/02-components.css">
   <link rel="stylesheet" href="css/03-web-layout.css">
   <style>
-    /* CSS Tab Switching via Radio Buttons */
+    /* CSS Tab Switching Scoped inside .web-container */
     .tab-input {
       display: none;
     }
@@ -21,7 +21,7 @@
       overflow-x: auto;
     }
     .tab-label {
-      padding: var(--space-3) var(--space-5);
+      padding: var(--space-3) var(--space-4);
       font-size: var(--font-sm);
       font-weight: var(--font-semibold);
       color: var(--color-text-muted);
@@ -34,34 +34,58 @@
       white-space: nowrap;
       transition: all var(--transition-fast);
       min-height: 44px;
+      border-radius: var(--radius-md) var(--radius-md) 0 0;
     }
     .tab-label:hover {
       color: var(--color-primary-base);
+      background-color: var(--slate-100);
     }
     .tab-content {
       display: none;
+      animation: fadeIn 200ms ease;
     }
-    #tab-radio-l1:checked ~ .web-main .tab-nav label[for="tab-radio-l1"],
-    #tab-radio-l2:checked ~ .web-main .tab-nav label[for="tab-radio-l2"],
-    #tab-radio-l3:checked ~ .web-main .tab-nav label[for="tab-radio-l3"] {
+    #tab-radio-l1:checked ~ .tab-nav label[for="tab-radio-l1"],
+    #tab-radio-l2:checked ~ .tab-nav label[for="tab-radio-l2"],
+    #tab-radio-l3:checked ~ .tab-nav label[for="tab-radio-l3"] {
       color: var(--color-primary-base);
       border-bottom-color: var(--color-primary-base);
       background-color: var(--color-primary-surface);
-      border-radius: var(--radius-md) var(--radius-md) 0 0;
+      font-weight: var(--font-bold);
     }
-    #tab-radio-l1:checked ~ .web-main #content-l1,
-    #tab-radio-l2:checked ~ .web-main #content-l2,
-    #tab-radio-l3:checked ~ .web-main #content-l3 {
+    #tab-radio-l1:checked ~ #content-l1,
+    #tab-radio-l2:checked ~ #content-l2,
+    #tab-radio-l3:checked ~ #content-l3 {
       display: block;
+    }
+
+    /* URL Hash Support via :has() */
+    .web-container:has(#content-l1:target) .tab-content { display: none; }
+    .web-container:has(#content-l1:target) #content-l1 { display: block; }
+    .web-container:has(#content-l1:target) .tab-nav label[for="tab-radio-l1"] {
+      color: var(--color-primary-base);
+      border-bottom-color: var(--color-primary-base);
+      background-color: var(--color-primary-surface);
+      font-weight: var(--font-bold);
+    }
+    .web-container:has(#content-l2:target) .tab-content { display: none; }
+    .web-container:has(#content-l2:target) #content-l2 { display: block; }
+    .web-container:has(#content-l2:target) .tab-nav label[for="tab-radio-l2"] {
+      color: var(--color-primary-base);
+      border-bottom-color: var(--color-primary-base);
+      background-color: var(--color-primary-surface);
+      font-weight: var(--font-bold);
+    }
+    .web-container:has(#content-l3:target) .tab-content { display: none; }
+    .web-container:has(#content-l3:target) #content-l3 { display: block; }
+    .web-container:has(#content-l3:target) .tab-nav label[for="tab-radio-l3"] {
+      color: var(--color-primary-base);
+      border-bottom-color: var(--color-primary-base);
+      background-color: var(--color-primary-surface);
+      font-weight: var(--font-bold);
     }
   </style>
 </head>
 <body class="web-shell">
-
-  <!-- Radio Inputs Tab Switching Pure CSS -->
-  <input type="radio" name="approval-tab" id="tab-radio-l1" class="tab-input">
-  <input type="radio" name="approval-tab" id="tab-radio-l2" class="tab-input" checked>
-  <input type="radio" name="approval-tab" id="tab-radio-l3" class="tab-input">
 
   <!-- TOPBAR -->
   <header class="web-topbar">
@@ -85,10 +109,69 @@
     </div>
 
     <div class="web-topbar__actions">
-      <div class="web-topbar__role-pill">
-        <span class="badge__dot" style="background-color: var(--color-success-base);"></span>
-        <span>Kasi Perencanaan (L2)</span>
-      </div>
+      <!-- ROLE SWITCHER POPOVER COMPONENT -->
+      <details class="role-switcher">
+        <summary aria-haspopup="true">
+          <span class="badge__dot" style="background-color: var(--amber-600); width: 8px; height: 8px;"></span>
+          <span>Peran: Kasi Perencanaan (L2)</span>
+          <svg class="role-switcher__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6 9 12 15 18 9"/>
+          </svg>
+        </summary>
+        <div class="role-switcher__menu" role="menu">
+          <div style="padding: var(--space-2) var(--space-3); border-bottom: 1px solid var(--color-border-subtle); font-size: 11px; font-weight: bold; color: var(--color-text-muted);">
+            PILIH PERSONA AKSES (SIMULASI)
+          </div>
+
+          <!-- L1 Pengawas Lapangan -->
+          <a href="approval-inbox.html#content-l1" class="role-switcher__item" role="menuitem">
+            <span class="badge__dot" style="background-color: var(--sky-500); width: 10px; height: 10px;"></span>
+            <div style="display: flex; flex-direction: column;">
+              <strong style="font-size: var(--font-xs); color: var(--color-text-main);">Pengawas Lapangan (L1)</strong>
+              <span class="form-hint" style="font-size: 10px;">Verifikasi fisik & foto lapangan</span>
+            </div>
+          </a>
+
+          <!-- L2 Kasi Perencanaan (Active) -->
+          <a href="approval-inbox.html#content-l2" class="role-switcher__item is-active" role="menuitem">
+            <span class="badge__dot" style="background-color: var(--amber-600); width: 10px; height: 10px;"></span>
+            <div style="display: flex; flex-direction: column;">
+              <strong style="font-size: var(--font-xs); color: var(--amber-800);">Kasi Perencanaan (L2) &bull; Aktif</strong>
+              <span class="form-hint" style="font-size: 10px;">Validasi teknis & deviasi DED</span>
+            </div>
+          </a>
+
+          <!-- L3 Manajer Teknik -->
+          <a href="approval-inbox.html#content-l3" class="role-switcher__item" role="menuitem">
+            <span class="badge__dot" style="background-color: var(--green-600); width: 10px; height: 10px;"></span>
+            <div style="display: flex; flex-direction: column;">
+              <strong style="font-size: var(--font-xs); color: var(--color-text-main);">Manajer Teknik (L3)</strong>
+              <span class="form-hint" style="font-size: 10px;">Pengesahan formal SK & BAST</span>
+            </div>
+          </a>
+
+          <!-- Admin / GIS -->
+          <a href="admin-master.html" class="role-switcher__item" role="menuitem">
+            <span class="badge__dot" style="background-color: var(--slate-600); width: 10px; height: 10px;"></span>
+            <div style="display: flex; flex-direction: column;">
+              <strong style="font-size: var(--font-xs); color: var(--color-text-main);">Administrator GIS</strong>
+              <span class="form-hint" style="font-size: 10px;">Master data DMA & log audit</span>
+            </div>
+          </a>
+
+          <!-- Mobile App Surveyor -->
+          <div style="border-top: 1px solid var(--color-border-subtle); margin-top: var(--space-1); padding-top: var(--space-1);">
+            <a href="app/index.html" class="role-switcher__item" role="menuitem" style="color: var(--sky-700);">
+              <span style="font-size: 14px;">📱</span>
+              <div style="display: flex; flex-direction: column;">
+                <strong style="font-size: var(--font-xs);">Mode Surveyor Lapangan</strong>
+                <span class="form-hint" style="font-size: 10px;">Buka aplikasi mobile (PWA)</span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </details>
+
       <a href="app/index.html" class="btn btn--outline btn--sm">App Lapangan</a>
       <a href="index.html" class="btn btn--secondary btn--sm">Keluar</a>
     </div>
@@ -185,31 +268,49 @@
         </div>
       </div>
 
+      <!-- SCOPED RADIO INPUTS FOR TAB ENGINE -->
+      <input type="radio" name="approval-tab" id="tab-radio-l1" class="tab-input">
+      <input type="radio" name="approval-tab" id="tab-radio-l2" class="tab-input" checked>
+      <input type="radio" name="approval-tab" id="tab-radio-l3" class="tab-input">
+
       <!-- TAB SELECTION PURE CSS -->
       <nav class="tab-nav" aria-label="Tab Level Persetujuan">
         <label for="tab-radio-l1" class="tab-label">
           <span>Level 1: Pengawas Lapangan</span>
+          <span class="badge badge--neutral">Mode Pantau</span>
           <span class="badge badge--neutral">14 Berkas</span>
         </label>
         <label for="tab-radio-l2" class="tab-label">
-          <span>Level 2: Kasi Perencanaan (Anda)</span>
+          <span>Level 2: Kasi Perencanaan</span>
+          <span class="badge badge--success">✔ Wewenang Anda</span>
           <span class="badge badge--warning">8 Berkas</span>
         </label>
         <label for="tab-radio-l3" class="tab-label">
-          <span>Level 3: Manajer Teknik / SK</span>
-          <span class="badge badge--success">3 Berkas</span>
+          <span>Level 3: Manajer Teknik</span>
+          <span class="badge badge--neutral">Mode Pantau</span>
+          <span class="badge badge--neutral">3 Berkas</span>
         </label>
       </nav>
 
-      <!-- TAB CONTENT LEVEL 1 -->
+      <!-- TAB CONTENT LEVEL 1 (MODE PANTAUAN) -->
       <section class="tab-content" id="content-l1">
+        <div class="alert alert--info" style="display: flex; align-items: center; justify-content: space-between;">
+          <div style="display: flex; align-items: center; gap: var(--space-2);">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/>
+            </svg>
+            <span><strong>Mode Pantauan / Audit (Level 1):</strong> Anda sedang melihat antrean verifikasi Pengawas Lapangan. Putusan verifikasi fisik berada pada otoritas Pengawas L1.</span>
+          </div>
+          <span class="badge badge--neutral">Hanya Baca</span>
+        </div>
+
         <div class="card">
           <div class="card__header">
             <div>
               <h2 class="card__title">Antrean Verifikasi Fisik Pengawas Lapangan (L1)</h2>
               <p class="form-hint">Fokus: Memastikan kesesuaian fisik pipa yang tertanam dan keaslian foto lapangan.</p>
             </div>
-            <span class="badge badge--warning">14 Menunggu</span>
+            <span class="badge badge--neutral">14 Berkas Dipantau</span>
           </div>
           <div class="table-container">
             <table class="data-table">
@@ -220,7 +321,7 @@
                   <th>Wilayah DMA</th>
                   <th>Surveyor Lapangan</th>
                   <th>Status L1</th>
-                  <th>Aksi</th>
+                  <th>Aksi Pantauan</th>
                 </tr>
               </thead>
               <tbody>
@@ -230,7 +331,7 @@
                   <td>DMA 01</td>
                   <td>Rudi Hartono</td>
                   <td><span class="badge badge--danger">Deviasi Jalur > 2m</span></td>
-                  <td><a href="opname-monitoring.html" class="btn btn--outline btn--sm">Inspeksi Foto</a></td>
+                  <td><a href="opname-monitoring.html" class="btn btn--outline btn--sm">Buka Detail (Audit)</a></td>
                 </tr>
                 <tr>
                   <td style="font-family: var(--font-mono); font-weight: bold;">SPK-2026-DMA03-011</td>
@@ -238,7 +339,7 @@
                   <td>DMA 03</td>
                   <td>Agus Setiawan</td>
                   <td><span class="badge badge--warning">Menunggu Pengecekan</span></td>
-                  <td><a href="dokumen-detail.html" class="btn btn--primary btn--sm">Verifikasi L1</a></td>
+                  <td><a href="dokumen-detail.html" class="btn btn--outline btn--sm">Buka Detail (Audit)</a></td>
                 </tr>
               </tbody>
             </table>
@@ -246,8 +347,18 @@
         </div>
       </section>
 
-      <!-- TAB CONTENT LEVEL 2 (DEFAULT ACTIVE) -->
+      <!-- TAB CONTENT LEVEL 2 (WEWENANG ANDA - DEFAULT ACTIVE) -->
       <section class="tab-content" id="content-l2">
+        <div class="alert alert--warning" style="display: flex; align-items: center; justify-content: space-between; border-left: 4px solid var(--color-warning-base);">
+          <div style="display: flex; align-items: center; gap: var(--space-2);">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+            </svg>
+            <span><strong>Zona Wewenang Anda (Level 2):</strong> Anda berwenang melakukan evaluasi teknis, validasi deviasi DED, dan penerusan rekomendasi ke L3.</span>
+          </div>
+          <span class="badge badge--warning">Wajib Putusan (8 Berkas)</span>
+        </div>
+
         <div class="card">
           <div class="card__header">
             <div>
@@ -280,7 +391,7 @@
                   <td><span class="badge badge--success">✔ Terverifikasi L1</span></td>
                   <td>
                     <span class="badge badge--warning">Geser Jalur +1.2m</span><br>
-                    <span class="form-hint">Aman dari kabel Telkom</span>
+                    <span class="form-hint">Aman dari utilitas Telkom</span>
                   </td>
                   <td><strong>Hari ini (26 Okt)</strong></td>
                   <td>
@@ -326,6 +437,7 @@
                   <td>
                     <div style="display: flex; gap: var(--space-2);">
                       <a href="dokumen-detail.html" class="btn btn--primary btn--sm">Buka Viewer CAD</a>
+                      <a href="#modal-quick-decision" class="btn btn--outline btn--sm">Putusan Cepat</a>
                     </div>
                   </td>
                 </tr>
@@ -333,10 +445,39 @@
             </table>
           </div>
         </div>
+
+        <!-- SIMULASI EMPTY STATE -->
+        <details class="card" style="margin-top: var(--space-4);">
+          <summary style="padding: var(--space-3) var(--space-4); font-size: var(--font-xs); font-weight: var(--font-bold); color: var(--color-text-muted); cursor: pointer;">
+            Pratinjau Visual: Jika Seluruh Berkas Wewenang Selesai (Empty State)
+          </summary>
+          <div class="empty-state">
+            <div class="empty-state__icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+            </div>
+            <h3 class="empty-state__title">Semua Antrean Selesai Dievaluasi</h3>
+            <p class="empty-state__desc">Tidak ada berkas as-built drawing yang menunggu putusan Level 2 saat ini. Seluruh berkas telah disahkan ke tahap L3 atau dikembalikan ke tahap revisi lapangan.</p>
+            <a href="dokumen-list.html" class="btn btn--outline btn--sm" style="margin-top: var(--space-2);">
+              Lihat Riwayat Dokumen Lengkap
+            </a>
+          </div>
+        </details>
       </section>
 
-      <!-- TAB CONTENT LEVEL 3 -->
+      <!-- TAB CONTENT LEVEL 3 (MODE PANTAUAN) -->
       <section class="tab-content" id="content-l3">
+        <div class="alert alert--info" style="display: flex; align-items: center; justify-content: space-between;">
+          <div style="display: flex; align-items: center; gap: var(--space-2);">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/>
+            </svg>
+            <span><strong>Mode Pantauan / Audit (Level 3):</strong> Anda sedang memantau antrean pengesahan Direksi/Manajer Teknik. Penerbitan SK resmi dilakukan oleh pejabat L3.</span>
+          </div>
+          <span class="badge badge--neutral">Hanya Baca</span>
+        </div>
+
         <div class="card">
           <div class="card__header">
             <div>
@@ -353,7 +494,7 @@
                   <th>Pekerjaan</th>
                   <th>Rekomendasi Kasi L2</th>
                   <th>Nilai Kontrak</th>
-                  <th>Status SK</th>
+                  <th>Aksi Pantauan</th>
                 </tr>
               </thead>
               <tbody>
@@ -362,7 +503,7 @@
                   <td>Jaringan Tersier Sambungan Rumah (42 SR)</td>
                   <td><span class="badge badge--success">Disetujui Penuh L2</span></td>
                   <td>Rp 245.000.000</td>
-                  <td><span class="badge badge--info">Siap Tanda Tangan Digital</span></td>
+                  <td><a href="dokumen-detail.html" class="btn btn--outline btn--sm">Lihat Berkas (Audit)</a></td>
                 </tr>
               </tbody>
             </table>
@@ -381,32 +522,32 @@
         <h2 class="modal__title" id="modal-quick-title">Putusan Evaluasi Teknis Kasi (L2)</h2>
         <a href="#" class="modal__close" aria-label="Tutup">&times;</a>
       </div>
-      <form action="approval-inbox.html" method="get">
+      <form action="approval-inbox.html#content-l2" method="get">
         <div class="modal__body">
           <p>Pilih putusan untuk berkas terpilih: <strong>SPK-2026-DMA04-019</strong></p>
           
           <div style="display: flex; flex-direction: column; gap: var(--space-3); margin-top: var(--space-4);">
-            <label style="display: flex; gap: var(--space-3); align-items: flex-start; padding: var(--space-3); border: 1.5px solid var(--color-success-border); border-radius: var(--radius-md); background-color: var(--green-50); cursor: pointer;">
-              <input type="radio" name="keputusan" value="approve" checked style="margin-top: 4px;">
-              <div>
-                <strong style="color: var(--green-800);">Setujui & Teruskan ke L3 (Manajer Teknik)</strong>
-                <p class="form-hint" style="font-size: 0.75rem; margin-top: 2px;">Seluruh parameter teknis terverifikasi dan memenuhi toleransi aman Prototipe App.</p>
+            <label class="radio-card radio-card--success" for="decision-approve">
+              <input type="radio" name="keputusan" id="decision-approve" value="approve" checked style="margin-top: 4px;">
+              <div style="flex: 1;">
+                <strong style="color: var(--green-800); display: block;">Setujui & Teruskan ke L3 (Manajer Teknik)</strong>
+                <span class="form-hint" style="font-size: 0.75rem;">Seluruh parameter teknis terverifikasi dan memenuhi toleransi aman Prototipe App.</span>
               </div>
             </label>
 
-            <label style="display: flex; gap: var(--space-3); align-items: flex-start; padding: var(--space-3); border: 1.5px solid var(--color-warning-border); border-radius: var(--radius-md); background-color: var(--amber-50); cursor: pointer;">
-              <input type="radio" name="keputusan" value="revision" style="margin-top: 4px;">
-              <div>
-                <strong style="color: var(--amber-800);">Kembalikan untuk Perbaikan (Revisi Lapangan)</strong>
-                <p class="form-hint" style="font-size: 0.75rem; margin-top: 2px;">Terdapat deviasi atau data lapangan yang belum lengkap untuk dipertanggungjawabkan.</p>
+            <label class="radio-card radio-card--warning" for="decision-revision">
+              <input type="radio" name="keputusan" id="decision-revision" value="revision" style="margin-top: 4px;">
+              <div style="flex: 1;">
+                <strong style="color: var(--amber-800); display: block;">Kembalikan untuk Perbaikan (Revisi Lapangan)</strong>
+                <span class="form-hint" style="font-size: 0.75rem;">Terdapat deviasi atau data lapangan yang belum lengkap untuk dipertanggungjawabkan.</span>
               </div>
             </label>
 
-            <label style="display: flex; gap: var(--space-3); align-items: flex-start; padding: var(--space-3); border: 1.5px solid var(--color-danger-border); border-radius: var(--radius-md); background-color: var(--rose-50); cursor: pointer;">
-              <input type="radio" name="keputusan" value="reject" style="margin-top: 4px;">
-              <div>
-                <strong style="color: var(--rose-800);">Tolak Berkas Secara Total</strong>
-                <p class="form-hint" style="font-size: 0.75rem; margin-top: 2px;">Melanggar spesifikasi teknik dasar Prototipe App dan wajib redesain/survei ulang.</p>
+            <label class="radio-card radio-card--danger" for="decision-reject">
+              <input type="radio" name="keputusan" id="decision-reject" value="reject" style="margin-top: 4px;">
+              <div style="flex: 1;">
+                <strong style="color: var(--rose-800); display: block;">Tolak Berkas Secara Total</strong>
+                <span class="form-hint" style="font-size: 0.75rem;">Melanggar spesifikasi teknik dasar Prototipe App dan wajib redesain/survei ulang.</span>
               </div>
             </label>
           </div>
